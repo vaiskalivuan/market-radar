@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hahow 市場雷達 — 報告總覽</title>
+<style>
+  :root { --teal:#0ADAB2;--navy:#1F497D;--dark-navy:#2B4764;--orange:#FA8D0B;--mint-bg:#E6FFF8;--near-white:#F9FBFB;--soft-mint:#6AE4C3;--dark-text:#434343; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,'Noto Sans TC',sans-serif;background:var(--near-white);color:var(--dark-text);}
+  header{background:linear-gradient(135deg,var(--navy),#2a6099 60%,#1a6b5a);color:white;text-align:center;padding:48px 24px 36px;}
+  header h1{font-size:2rem;font-weight:800;}
+  header p{color:var(--soft-mint);margin-top:8px;}
+  .container{max-width:800px;margin:0 auto;padding:32px 16px;}
+  .week-card{background:white;border-radius:14px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,0.08);margin-bottom:20px;border-left:5px solid var(--teal);transition:transform 0.15s,box-shadow 0.15s;}
+  .week-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.12);}
+  .week-date{font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+  .week-title{font-size:1.15rem;font-weight:700;color:var(--navy);margin:6px 0 14px;}
+  .btn-group{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:opacity 0.15s;}
+  .btn:hover{opacity:0.85;}
+  .btn-team{background:var(--navy);color:white;}
+  .btn-vais{background:var(--teal);color:var(--navy);}
+  .badge{display:inline-block;background:var(--mint-bg);color:var(--navy);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid var(--soft-mint);margin-left:8px;}
+  footer{background:var(--dark-navy);color:white;text-align:center;padding:20px;font-size:0.82rem;margin-top:32px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>📡 Hahow 市場雷達</h1>
+  <p>每週一自動更新 · 課程開發市場情報中心</p>
+</header>
+<div class="container">
+  <div id="reports">
+    <div class="week-card">
+      <div class="week-date">2026 年第 12 週</div>
+      <div class="week-title">市場雷達 2026-03-23 <span class="badge">⚡ 3 個重大動態</span></div>
+      <div class="btn-group">
+        <a class="btn btn-team" href="reports/market-radar-team-2026-03-23.html">👥 全團隊版</a>
+        <a class="btn btn-vais" href="reports/market-radar-vais-2026-03-23.html">🎯 Vais 個人版</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>📡 Hahow 課程開發市場雷達 · 每週一自動產出 · vaiskalivuan/market-radar</footer>
+</body>
+</html>
