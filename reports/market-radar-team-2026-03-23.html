@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hahow 市場雷達｜2026-03-23 全團隊版</title>
+<style>
+  :root {
+    --teal: #0ADAB2;
+    --soft-mint: #6AE4C3;
+    --mint-bg: #E6FFF8;
+    --navy: #1F497D;
+    --dark-navy: #2B4764;
+    --orange: #FA8D0B;
+    --near-white: #F9FBFB;
+    --dark-text: #434343;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, 'Noto Sans TC', sans-serif;
+    background: var(--near-white);
+    color: var(--dark-text);
+    line-height: 1.7;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a6099 100%);
+    color: white;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .header h1 { font-size: 2rem; font-weight: 800; letter-spacing: 0.02em; }
+  .header .subtitle { color: var(--soft-mint); margin-top: 8px; font-size: 1rem; }
+  .header .meta { margin-top: 12px; font-size: 0.85rem; opacity: 0.8; }
+  .badge {
+    display: inline-block; background: var(--teal); color: var(--navy);
+    font-weight: 700; padding: 3px 12px; border-radius: 20px;
+    font-size: 0.8rem; margin: 4px 2px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+  .section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 1.25rem; font-weight: 700; color: var(--navy);
+    border-left: 4px solid var(--teal); padding-left: 12px;
+    margin-bottom: 16px;
+  }
+  .card {
+    background: white; border-radius: 12px; padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); margin-bottom: 12px;
+  }
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--mint-bg); border-radius: 12px; padding: 16px;
+    text-align: center; border: 1px solid var(--soft-mint);
+  }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--orange); }
+  .stat-label { font-size: 0.85rem; color: var(--navy); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th {
+    background: var(--navy); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e8f5f1; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--mint-bg); }
+  .tag {
+    display: inline-block; background: var(--mint-bg); color: var(--navy);
+    border-radius: 20px; padding: 3px 10px; font-size: 0.78rem;
+    margin: 2px; font-weight: 600; border: 1px solid var(--soft-mint);
+  }
+  .tag-orange { background: #fff3e0; color: #c66b00; border-color: #ffc876; }
+  .hit { background: #fff3e0; color: #c66b00; font-weight: 700; border-radius: 4px; padding: 1px 5px; }
+  .flash { background: #ffebee; color: #c62828; font-weight: 700; border-radius: 4px; padding: 1px 5px; }
+  .trend-card { border-left: 4px solid var(--teal); padding: 12px 16px; background: var(--mint-bg); border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+  .trend-title { font-weight: 700; color: var(--navy); }
+  .trend-body { font-size: 0.9rem; margin-top: 4px; }
+  .topic-card { background: white; border-radius: 8px; padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 10px; }
+  .topic-title { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+  .topic-meta { font-size: 0.8rem; color: #888; margin-top: 2px; }
+  .topic-body { font-size: 0.88rem; margin-top: 6px; }
+  .assignee-header {
+    background: var(--navy); color: white; padding: 10px 16px;
+    border-radius: 8px 8px 0 0; font-weight: 700;
+  }
+  .assignee-body { border: 1px solid #dce8e4; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; margin-bottom: 16px; }
+  .assignee-body table { margin: 0; }
+  .salmon-card { background: #fff8e1; border: 1px solid #ffc107; border-radius: 8px; padding: 14px; margin-bottom: 10px; }
+  footer {
+    background: var(--dark-navy); color: white;
+    text-align: center; padding: 24px;
+    font-size: 0.85rem; margin-top: 32px;
+  }
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .header h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📡 Hahow 市場雷達 — 全團隊版</h1>
+  <div class="subtitle">每週一自動掃描 · 保持市場敏銳度</div>
+  <div class="meta">
+    <span class="badge">2026-03-23（週一）</span>
+    <span class="badge">資料涵蓋 2026/03/16–03/23</span>
+    <span class="badge">進行中人選 49 位</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 1. 本週摘要 -->
+<div class="section">
+  <div class="section-title">📊 本週摘要</div>
+  <div class="summary-grid">
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">重大動態 ⚡</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">49</div>
+      <div class="stat-label">進行中人選</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">邀約信待發出</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">鮭魚機會訊號</div>
+    </div>
+  </div>
+  <div class="card">
+    <p>本週三大亮點：<strong>謝金燕</strong>大港開唱20周年豬哥亮「跨時空合體」席捲全台社群，台語課程市場窗口空前大開；<strong>黃山料</strong>《擁有過 就好》台中簽書會順利舉辦，連五年誠品冠軍氣勢不減，邀約信應立刻發出；<strong>張景嵐</strong>「草率季」10周年聯展以「慾望」為主題爆紅藝文圈，與藝術靜心課程定位高度契合。</p>
+    <p style="margin-top:8px;">台灣社群本週還在熱議：WBC世界棒球經典賽（委內瑞拉奪冠，曾豪駒率隊）、HYROX健身賽事爆紅、敏迪選讀備孕凍卵特集意外爆炸性傳播、PAPAYA OneDrive資料消失事件引發科技社群討論。</p>
+  </div>
+</div>
+
+<!-- 2. 排行榜觀察 -->
+<div class="section">
+  <div class="section-title">📚 排行榜觀察（近期週榜）</div>
+  <p style="font-size:0.85rem; color:#888; margin-bottom:12px;">* 博客來官網及Spotify週榜本週無法直接抓取，以下為本週搜尋到的近期最新書榜與Podcast熱門資訊。</p>
+  <div class="card">
+    <strong>📖 博客來近期熱銷書（商業理財 + 心理勵志）</strong>
+    <table style="margin-top:12px;">
+      <tr><th>#</th><th>書名</th><th>作者</th><th>分類</th><th>備註</th></tr>
+      <tr><td>1</td><td>《擁有過 就好》</td><td><span class="hit">🎯 黃山料</span></td><td>心理勵志</td><td>2026/3 台中簽書會，連五年誠品暢銷冠軍</td></tr>
+      <tr><td>2</td><td>《格局》</td><td>張忠謀</td><td>商業理財</td><td>長期暢銷，管理思維</td></tr>
+      <tr><td>3</td><td>《財商：不費力才會贏》</td><td>吳淡如</td><td>商業理財</td><td>2026年3月熱銷中</td></tr>
+      <tr><td>4</td><td>《在黑暗中相遇》</td><td><span class="hit">🎯 謝哲青</span></td><td>心理勵志</td><td>2025/10出版，書展後持續熱銷</td></tr>
+      <tr><td>5</td><td>《孤獨才是最棒的晚年》</td><td>岸見一郎</td><td>心理勵志</td><td>高齡趨勢背景下的熱銷議題</td></tr>
+    </table>
+    <p style="font-size:0.8rem; color:#888; margin-top:8px;">🎯 = 命中內部人選名單</p>
+  </div>
+
+  <div class="card" style="margin-top:12px;">
+    <strong>🎙️ Podcast 知識型台灣熱門</strong>
+    <table style="margin-top:12px;">
+      <tr><th>#</th><th>節目名稱</th><th>主持人</th><th>本週動態</th></tr>
+      <tr><td>1</td><td>敏迪選讀</td><td><span class="hit">🎯 敏迪</span></td><td>⚡ 備孕凍卵特集爆紅，東京巡迴結束，471集+</td></tr>
+      <tr><td>2</td><td>山羌閱覽室</td><td><span class="hit">🎯 連俞涵</span></td><td>每週三更新，閱讀陪伴定位穩固</td></tr>
+      <tr><td>3</td><td>跳脫Do式圈</td><td><span class="hit">🎯 The DoDo Men</span></td><td>每週一更新，Ian有個人課程預售中</td></tr>
+      <tr><td>4</td><td>台灣通勤第一品牌</td><td>—</td><td>長期榜首</td></tr>
+      <tr><td>5</td><td>百靈果 News</td><td>凱莉、Ken</td><td>長期高人氣國際新聞節目</td></tr>
+    </table>
+    <p style="font-size:0.8rem; color:#888; margin-top:8px;">🎯 = 命中內部人選名單</p>
+  </div>
+</div>
+
+<!-- 3. 課程相關趨勢 -->
+<div class="section">
+  <div class="section-title">🔥 課程相關趨勢（2026 Q1）</div>
+
+  <div class="trend-card">
+    <div class="trend-title">🤖 AI 技能缺口爆發——非技術背景入門AI成最熱需求</div>
+    <div class="trend-body">LinkedIn數據顯示2026年成長最快的職位前5名有4個與AI直接相關，「AI應用規劃師」成為非資工背景也能入門的新職種，創辦人頭銜暴增69%。<br><strong>課程切角</strong>：AI×PM、AI×行銷、AI×財務等跨域應用課，Peter Su（Vais，已pitch）和海總理（Frank）均直接符合此趨勢，建議加速。</div>
+  </div>
+
+  <div class="trend-card">
+    <div class="trend-title">💰 個人理財「翻身焦慮」持續高熱</div>
+    <div class="trend-body">2026年被廣泛定義為「翻身元年」，理財話題在Yahoo、Dcard、PTT持續高聲量。ETF、資產配置、家庭財務規劃等關鍵字搜量居高不下。<br><strong>課程切角</strong>：珊迪兔（家庭理財/類訂閱）定位精準，38婦女節女性理財意識升溫，邀約信本週發出最適合。</div>
+  </div>
+
+  <div class="trend-card">
+    <div class="trend-title">🏃 健身科學化——HYROX現象席捲台灣</div>
+    <div class="trend-body">HYROX健身賽事在台灣社群本週爆紅，功能性訓練（力量+有氧）概念快速蔓延。體態調整從「減脂」進化到「科學化功能訓練」。<br><strong>課程切角</strong>：KIMIKO體態課可強化「科學體態設計」概念；筋肉媽媽4月開幕WanTraining Glute Science Studio也印證此趨勢。</div>
+  </div>
+
+  <div class="trend-card">
+    <div class="trend-title">🌟 台語文化復興——情緒窗口難得</div>
+    <div class="trend-body">謝金燕大港爆紅（豬哥亮跨時空合體）、WBC棒球熱潮、敏迪選讀談台灣棒球，本土文化/台語認同情緒空前高漲。<br><strong>課程切角</strong>：温若喬台語課提案已備好，建議本週讓Arnold知道——市場情緒加持下行銷成本大幅降低。</div>
+  </div>
+
+  <div class="trend-card">
+    <div class="trend-title">🧠 心理健康——情緒界限、榮格應用持續需求</div>
+    <div class="trend-body">2026年職場壓力、世代溝通衝突讓情緒類課程需求穩定成長。洪仲清、鄧惠文等心理專家課程在多平台持續熱銷。<br><strong>課程切角</strong>：情緒界限（洪仲清方向）差異化清晰，榮格×日常應用（鄧惠文）有明確受眾群。</div>
+  </div>
+</div>
+
+<!-- 4. 本週社群熱議 -->
+<div class="section">
+  <div class="section-title">💬 本週台灣社群熱議（2026/03/16–03/23）</div>
+  <div class="card-grid">
+    <div class="topic-card">
+      <div class="topic-title">⚡ 謝金燕大港開唱20周年「豬哥亮跨時空合體」</div>
+      <div class="topic-meta">娛樂 · 聲量極高 🔥🔥🔥</div>
+      <div class="topic-body">3/21高雄大港開唱，謝金燕以「初代大港女神」登場，安排與豬哥亮的跨時空合作，全場萬人齊喊「謝新達」。台日雙女神（謝金燕+日本milet）話題席捲IG、Threads、LINE TODAY。<br><span class="tag tag-orange">台語課程市場窗口大開</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">⚡ 2026 WBC 世界棒球經典賽落幕（委內瑞拉奪冠）</div>
+      <div class="topic-meta">運動 · 聲量極高 🔥🔥🔥</div>
+      <div class="topic-body">3/5-18舉辦，台灣棒球情緒高漲，曾豪駒率隊（連三屆帶隊）。委內瑞拉最終奪冠，台灣棒球管理/領導力話題延燒至今。<br><span class="tag tag-orange">曾豪駒開發時機佳</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">HYROX 健身賽事爆紅台灣</div>
+      <div class="topic-meta">健康運動 · 聲量高 🔥🔥</div>
+      <div class="topic-body">HYROX vs CrossFit討論大量湧現，功能性健身概念快速滲透，IG/Threads相關hashtag暴增。<br><span class="tag tag-orange">體態課程定位升級機會</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">敏迪選讀備孕凍卵特集爆紅</div>
+      <div class="topic-meta">生活/女性 · 聲量高 🔥🔥</div>
+      <div class="topic-body">3/18敏迪分享備孕凍卵心路歷程，突破原本定位觸達大量新聽眾，留言數爆發。印證跨主題能力強。<br><span class="tag">課程多元切角可行</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">張景嵐×葉忠宜「草率季」10周年聯展</div>
+      <div class="topic-meta">藝術/設計 · 聲量中高 🔥🔥</div>
+      <div class="topic-body">以「慾望」為主題，書法草書×攝影聯展，藝人跨界藝術創作引發設計社群熱烈討論，藝文曝光度大升。<br><span class="tag tag-orange">藝術靜心課程提案時機絕佳</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">PAPAYA OneDrive 資料消失事件</div>
+      <div class="topic-meta">科技/KOL · 聲量中高 🔥🔥</div>
+      <div class="topic-body">PAPAYA電腦教室20年資料一夕消失，問微軟只得AI回應，大量社群同情轉發，引發雲端備份安全性討論。<br><span class="tag tag-orange">鮭魚機會訊號（見下方）</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">38 婦女節消費熱潮</div>
+      <div class="topic-meta">消費/節慶 · 聲量中 🔥</div>
+      <div class="topic-body">各品牌祭出優惠，女性賦權、理財自主話題伴隨升溫。<br><span class="tag">女性理財邀約信時機好</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">黃山料《擁有過 就好》台中簽書會</div>
+      <div class="topic-meta">文學/出版 · 聲量中 🔥</div>
+      <div class="topic-body">3/7台中中友店簽書會順利舉辦，連五年誠品冠軍，社群讀者心得持續流傳。<br><span class="tag tag-orange">邀約信立刻發！</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">2026 職場AI大洗牌討論</div>
+      <div class="topic-meta">職場/科技 · 聲量高 🔥🔥</div>
+      <div class="topic-body">LinkedIn揭露25大熱門職業、創辦人頭銜暴增69%等新聞大量流傳，「如何不被AI取代」焦慮情緒高漲。<br><span class="tag">AI課程持續熱門</span></div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-title">空調換機潮（早販戰）</div>
+      <div class="topic-meta">生活消費 · 聲量中 🔥</div>
+      <div class="topic-body">夏普、日立、大同春季換機優惠，消費者教育需求討論熱烈。<br><span class="tag">課程關聯低</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. 各同事人選動態 -->
+<div class="section">
+  <div class="section-title">👥 各同事人選動態（依 Assignee 分組）</div>
+
+  <div class="assignee-header">🔷 Vais Ljakalevuan — 13 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:18%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>KIMIKO</strong><br><small>體態調整</small></td>
+        <td>合作洽談</td>
+        <td>KimiBarre®Body課程持續推廣，官網正常運營。HYROX爆紅讓功能性體態需求升溫，二次提案可強化「科學體態設計」角度補充市場佐證。</td>
+      </tr>
+      <tr>
+        <td><strong>黃山料</strong><br><small>人生定錨（類訂閱）</small></td>
+        <td>邀約信待發</td>
+        <td><span class="flash">⚡ 重大動態</span> 《擁有過 就好》3月台中簽書會剛結束，連五年誠品暢銷冠軍氣勢不減。組內提案簡報已完成，邀約信應本週發出，時機最佳。</td>
+      </tr>
+      <tr>
+        <td><strong>連俞涵</strong><br><small>閱讀陪伴（類訂閱）</small></td>
+        <td>邀約信待發</td>
+        <td>Podcast《山羌閱覽室》每週三更新，2026年海外巡迴計畫（東京、舊金山），曝光度上升。提案簡報已完成，邀約信可與黃山料同週發出。</td>
+      </tr>
+      <tr>
+        <td><strong>敏迪選讀</strong><br><small>批判思考/台灣史</small></td>
+        <td>討論中</td>
+        <td><span class="flash">⚡ 重大動態</span> 3/14東京巡迴結束；3/18備孕凍卵特集意外爆紅，觸達大量新聽眾，跨主題延伸能力再次印證。471集+，WBC棒球話題也在談。紅隊評估進程可加速。</td>
+      </tr>
+      <tr>
+        <td><strong>珊迪兔</strong><br><small>家庭理財（類訂閱）</small></td>
+        <td>邀約信定稿</td>
+        <td>IG @sandy2family 持續更新。38婦女節女性理財意識升溫 + 2026翻身理財話題，市場高度吻合。邀約信定稿完成，建議本週發出。</td>
+      </tr>
+      <tr>
+        <td><strong>張景嵐</strong><br><small>藝術靜心</small></td>
+        <td>已聯繫中</td>
+        <td><span class="flash">⚡ 重大動態</span> 3月「草率季」10周年展覽聯展（以「慾望」主題書法×攝影），藝文社群大量討論，藝術跨界形象大幅提升。與藝術靜心課程定位高度契合，跟經紀人的討論可以此次曝光為切入點加速。</td>
+      </tr>
+      <tr>
+        <td><strong>The DoDo Men</strong><br><small>挑戰方法論</small></td>
+        <td>4月中再接觸</td>
+        <td>Ian有「成為頂尖產品人」課程預售中（promo code ddm250），顯示課程商業模式接受度提升。2026撕日曆發售中。4月中接觸時機到，可以Ian個人課程為基礎談DoDo Men品牌課可能性。</td>
+      </tr>
+      <tr>
+        <td><strong>安格斯</strong><br><small>占星×人生決策（類訂閱）</small></td>
+        <td>邀約信已發</td>
+        <td>2026年台北第九班實體課程（只收12+1位）報名剛結束，Hahow現有課程5800+學員。3/20新月許願推廣顯示持續活躍。等回覆中。</td>
+      </tr>
+      <tr>
+        <td><strong>温若喬</strong><br><small>台語（錄播）</small></td>
+        <td>等Arnold知道</td>
+        <td>謝金燕大港爆紅讓台語課市場窗口空前大開。溫若喬台文翻譯（泰戈爾《漂鳥集》）顯示深厚台文功力。提案已備好，建議本週就讓Arnold知道，不要錯過這波情緒高漲。</td>
+      </tr>
+      <tr>
+        <td><strong>Peter Su</strong><br><small>PM×AI（類訂閱）</small></td>
+        <td>等老師5月聯繫</td>
+        <td>AI職場話題本週聲量爆量，PM×AI定位極符合市場需求。5月老師主動聯繫時可準備最新市場數據（創辦人暴增69%、AI應用規劃師等）作支撐。</td>
+      </tr>
+      <tr>
+        <td><strong>洪仲清</strong><br><small>情緒界限（心理）</small></td>
+        <td>邀約信待發</td>
+        <td>心理健康議題本週持續熱門，無特別新動態但切角穩定。邀約信準備中。</td>
+      </tr>
+      <tr>
+        <td><strong>艾德導演</strong><br><small>旅拍電影感</small></td>
+        <td>推進簽約</td>
+        <td>無特別新動態，簽約流程進行中。5-6月預定開拍。</td>
+      </tr>
+      <tr>
+        <td><strong>黑熊學院</strong></td>
+        <td>3/28年會後聯繫</td>
+        <td>3/28年會即將到來（本週六），本週可準備好後續跟進話術與材料。</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignee-header" style="margin-top:16px;">🔷 Charlene Liang — 18 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:20%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>筋肉媽媽</strong></td>
+        <td>合作洽談</td>
+        <td><span class="flash">⚡</span> 2026年4月即將開幕 WanTraining Glute Science Studio（臀部科學訓練工作室），實體課業務積極擴張。HYROX健身趨勢爆紅的背景下，可作為提案時機佐證材料。</td>
+      </tr>
+      <tr>
+        <td><strong>尼可、朱麒、啾C</strong></td>
+        <td>合作洽談</td>
+        <td>本週無特別新動態，正常推進中。</td>
+      </tr>
+      <tr>
+        <td><strong>潘思璇（人生財報）</strong></td>
+        <td>合作洽談</td>
+        <td>理財熱潮持續，財務思維課程市場窗口佳。</td>
+      </tr>
+      <tr>
+        <td><strong>小深藍、邱韜誠、樊松蒲、Alpha Team、龍騰文化等</strong></td>
+        <td>合作洽談</td>
+        <td>本週無特別新動態。</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignee-header" style="margin-top:16px;">🔷 Momo Tseng — 7 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:20%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>空罐王</strong></td>
+        <td>合作洽談</td>
+        <td>IG 141K followers，持續推廣Hahow課程（promo code HHcankingstore），已有課程合作基礎。創作教學定位穩健，本週無特別新動態。</td>
+      </tr>
+      <tr>
+        <td><strong>彭毅弘 Bill（簡報）</strong></td>
+        <td>開發信邀約</td>
+        <td>企業培訓市場持續穩定，無特別新動態。</td>
+      </tr>
+      <tr>
+        <td><strong>高培 Gaopei、raymond（加密）、Grace/BetweenGos</strong></td>
+        <td>開發信邀約</td>
+        <td>理財/加密貨幣市場本週受FOMC會議與市場波動驅動，關注度持續高。</td>
+      </tr>
+      <tr>
+        <td><strong>Joe（金融）、邱煜庭</strong></td>
+        <td>合作洽談</td>
+        <td>金融理財趨勢穩定，本週無特別新動態。</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignee-header" style="margin-top:16px;">🔷 JolinaTu — 7 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:20%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>謝哲青（閱讀美學）</strong></td>
+        <td>合作洽談</td>
+        <td>《在黑暗中相遇》（2025/10出版）持續暢銷，2025書展講座影響力延續至今。多元背景（考古、藝術、旅行、說書）讓課程延伸潛力高。</td>
+      </tr>
+      <tr>
+        <td><strong>亞洲學說（劇本×心理）</strong></td>
+        <td>合作洽談</td>
+        <td>劇本創作在AI生成時代反而有差異化機會，無特別新動態。</td>
+      </tr>
+      <tr>
+        <td><strong>楊倩琳（理財，4月再約）</strong></td>
+        <td>暫緩至4月</td>
+        <td>4月接觸時機準備中。理財話題持續熱門，時機佳。</td>
+      </tr>
+      <tr>
+        <td><strong>余鎮文、Louis、Makoto、腦哥</strong></td>
+        <td>合作洽談</td>
+        <td>本週無特別新動態。</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignee-header" style="margin-top:16px;">🔷 Frank Chien — 2 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:20%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>海總理（AI每週實戰）</strong></td>
+        <td>合作洽談</td>
+        <td>AI職場應用話題本週聲量極高，「非工程背景的AI應用」需求爆發。定位與趨勢高度吻合，建議加速洽談進程。</td>
+      </tr>
+      <tr>
+        <td><strong>時刻威宇老師（說話課）</strong></td>
+        <td>合作洽談</td>
+        <td>無特別新動態，正常推進中。</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="assignee-header" style="margin-top:16px;">🔷 Oscar Du — 2 個進行中人選</div>
+  <div class="assignee-body">
+    <table>
+      <tr><th style="width:20%">人選</th><th style="width:15%">狀態</th><th>本週動態</th></tr>
+      <tr>
+        <td><strong>香港皇冠 - Chef Chu's Kitchen（港點）</strong></td>
+        <td>合作洽談</td>
+        <td>無特別新動態，飲食文化課程市場穩定。</td>
+      </tr>
+      <tr>
+        <td><strong>MIXXIN - Nuomi</strong></td>
+        <td>合作洽談</td>
+        <td>無特別新動態。</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 6. 鮭魚機會雷達 -->
+<div class="section">
+  <div class="section-title">🐟 鮭魚機會雷達</div>
+  <div class="salmon-card">
+    <strong>🐟 PAPAYA 電腦教室 — OneDrive事件引發大量同情聲量，窗口訊號出現</strong>
+    <p style="margin-top:8px; font-size:0.9rem;">PAPAYA電腦教室宣布20年教學資料因OneDrive問題一夕消失，問微軟只有AI回應，大量社群用戶表達同情並轉發，品牌能見度顯著上升。原評估為「免費資源太完整、不缺錢、找不到合作誘因」，但此事件可能帶來財務壓力與轉型動機。<br><br>
+    <strong>建議行動</strong>：觀察PAPAYA近期是否有「想建立可持續收入來源」的社群訊號，同情聲量高峰期（約未來2週內）是探詢的好時機。AI類訂閱方向可作為切入點。</p>
+    <div style="margin-top:8px;">
+      <span class="tag tag-orange">原狀態：婉拒/先放掉</span>
+      <span class="tag tag-orange">新訊號：同情聲量大，可能有財務壓力</span>
+    </div>
+  </div>
+  <div class="card">
+    <strong>其他暫緩/觀察中人選（無重大新動態）</strong>
+    <p style="margin-top:8px; font-size:0.9rem;">林辰Buchi（優先開發敏迪）、海苔熊（B+，需確認舊課數據）、歐陽立中（聲量待確認）本週均無特別新動態，維持原評估。</p>
+  </div>
+</div>
+
+<!-- 7. 整體市場開發建議 -->
+<div class="section">
+  <div class="section-title">💡 整體市場開發建議（全團隊視角）</div>
+  <div class="card">
+    <p><strong>① 本週行動優先：三封邀約信同步發出</strong><br>黃山料（組內提案完成）、連俞涵（提案完成）、珊迪兔（邀約信定稿）——三位現在都在最佳狀態，建議統一在本週啟動聯絡，避免市場動態冷卻後再被動出發。</p>
+    <br>
+    <p><strong>② 台語課程窗口：這週不動就浪費了</strong><br>謝金燕大港爆紅是台語課市場最強情緒加持。温若喬提案已備好，讓Arnold本週知道——搭這波行銷成本極低，錯過後要等下一個這樣的機會不知要等多久。</p>
+    <br>
+    <p><strong>③ 4月關鍵節點提前準備</strong><br>
+    • 3/28（本週六）：黑熊學院年會結束後立刻跟進<br>
+    • 4/15前：The DoDo Men接觸，準備以Ian已有課程為切入點）<br>
+    • 4月：筋肉媽媽工作室開幕（Charlene可用作提案素材）、楊倩琳再約（Jolina）</p>
+    <br>
+    <p><strong>④ AI課程人選補充建議</strong><br>目前AI類進行中人選偏少（僅Peter Su等5月、海總理），但市場需求爆炸。建議各同事主動搜尋合適AI應用類KOL，填補此缺口。</p>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p>📡 Hahow 市場雷達 — 全團隊版 · 2026-03-23（每週一自動產出）</p>
+  <p style="margin-top:6px; opacity:0.7;">資料來源：博客來、Spotify、Apple Podcast、Google News、Yahoo新聞、各社群平台公開資訊</p>
+</footer>
+
+</body>
+</html>
