@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ð¡ Hahow å¸å ´é·é</title>
+  <title>📡 Hahow 市場雷達</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -99,21 +99,21 @@
 </head>
 <body>
   <header>
-    <h1>ð¡ Hahow å¸å ´é·é</h1>
-    <p>æ¯é±ä¸èªåç¢åºï¼æ¶µèæè¡æ¦ãç¤¾ç¾¤ç±è­°ãäººé¸åæèé®­é­æ©æ</p>
+    <h1>📡 Hahow 市場雷達</h1>
+    <p>每週一自動產出，涵蓋排行榜、社群熱議、人選動態與鮭魚機會</p>
   </header>
 
   <div class="container">
-    <div class="section-title">ð å¨åéçå ±å</div>
+    <div class="section-title">📋 全團隊版報告</div>
     <div class="report-list" id="team-reports">
-      <div class="empty">è¼å¥ä¸­...</div>
+      <div class="empty">載入中...</div>
     </div>
   </div>
 
-  <footer>èªåç¢åº by Claude Â· Hahow èª²ç¨éç¼åé</footer>
+  <footer>自動產出 by Claude · Hahow 課程開發團隊</footer>
 
   <script>
-    // å·²ç¥çå ±åæ¸å®ï¼æ¯æ¬¡æ°å¢å ±åå¾èªåæ´æ°ï¼
+    // 已知的報告清單（每次新增報告後自動更新）
     const reports = [
       "2026-03-30",
       "2026-03-24",
@@ -124,7 +124,7 @@
     container.innerHTML = '';
 
     if (reports.length === 0) {
-      container.innerHTML = '<div class="empty">ç®åå°ç¡å ±å</div>';
+      container.innerHTML = '<div class="empty">目前尚無報告</div>';
     } else {
       reports.forEach((date, index) => {
         const card = document.createElement('div');
@@ -132,10 +132,10 @@
         const isLatest = index === 0;
         card.innerHTML = `
           <div>
-            <a href="reports/market-radar-team-${date}.html">ð å¸å ´é·é â ${date} å¨åéç</a>
+            <a href="reports/market-radar-team-${date}.html">📊 市場雷達 — ${date} 全團隊版</a>
             <div class="date">${date}</div>
           </div>
-          ${isLatest ? '<span class="badge latest">ææ°</span>' : '<span class="badge">æ­·å²</span>'}
+          ${isLatest ? '<span class="badge latest">最新</span>' : '<span class="badge">歷史</span>'}
         `;
         container.appendChild(card);
       });
