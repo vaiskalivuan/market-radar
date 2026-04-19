@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📡 Hahow 市場雷達 — Vais 個人版 2026-04-19</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,'Noto Sans TC',sans-serif;background:#f0faf8;color:#333;line-height:1.6}
+header{background:linear-gradient(135deg,#1F497D 0%,#0ADAB2 100%);color:white;padding:40px 24px 32px;text-align:center}
+header h1{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+header p{opacity:.85;font-size:.95rem}
+.personal-badge{background:rgba(250,141,11,.9);color:white;padding:4px 14px;border-radius:20px;font-size:.82rem;font-weight:700;display:inline-block;margin-top:8px}
+.container{max-width:960px;margin:0 auto;padding:28px 20px}
+.section{margin-bottom:36px}
+.section-title{font-size:1.15rem;font-weight:700;color:#1F497D;margin-bottom:16px;padding-bottom:8px;border-bottom:3px solid #0ADAB2}
+.card{background:white;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card-orange{border-left:4px solid #FA8D0B}
+.card-teal{border-left:4px solid #0ADAB2}
+.card-navy{border-left:4px solid #1F497D}
+.card-red{border-left:4px solid #e53e3e}
+.card-purple{border-left:4px solid #7c3aed}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:28px}
+.stat-card{background:white;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stat-num{font-size:2rem;font-weight:800;color:#0ADAB2}
+.stat-label{font-size:.82rem;color:#666;margin-top:4px}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;margin:2px}
+.tag-orange{background:#fff3e0;color:#FA8D0B}
+.tag-teal{background:#e0faf4;color:#0a9d80}
+.tag-navy{background:#e8eef7;color:#1F497D}
+.tag-red{background:#fee;color:#c53030}
+.tag-purple{background:#f3e8ff;color:#7c3aed}
+.tag-gray{background:#f0f0f0;color:#555}
+.hit{color:#FA8D0B;font-weight:700}
+.alert{color:#e53e3e;font-weight:700}
+.pipeline{font-size:.8rem;padding:3px 10px;border-radius:20px;background:#f0faf8;color:#0a9d80;font-weight:600;border:1px solid #0ADAB2}
+.candidate-row{background:white;border-bottom:1px solid #f0faf8;padding:14px 16px}
+.candidate-row:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.candidate-name{font-weight:700;color:#1F497D;font-size:.95rem}
+.candidate-meta{font-size:.8rem;color:#888;margin-top:2px}
+.candidate-update{font-size:.85rem;color:#444;margin-top:6px}
+.private-note{background:#fff9f0;border:1px dashed #FA8D0B;border-radius:8px;padding:10px;margin-top:8px;font-size:.83rem;color:#7a4a00}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#1F497D;color:white;padding:10px 12px;text-align:left}
+td{padding:10px 12px;border-bottom:1px solid #f0faf8;background:white;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.hot3::before{content:"🔥🔥🔥"}
+.hot2::before{content:"🔥🔥"}
+.hot1::before{content:"🔥"}
+.major::before{content:"⚡ "}
+.salmon-badge{background:#FA8D0B;color:white;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:700}
+.status-active{color:#0a9d80;font-weight:700}
+.status-pending{color:#888}
+.status-caution{color:#e53e3e;font-weight:700}
+.section-header-vais{background:linear-gradient(90deg,#FA8D0B,#f5a623);color:white;padding:10px 16px;border-radius:8px 8px 0 0;font-weight:700}
+a{color:#0a9d80;text-decoration:none}
+a:hover{text-decoration:underline}
+.recommend-box{background:linear-gradient(135deg,#fff9f0,#fff3e0);border:2px solid #FA8D0B;border-radius:12px;padding:20px;margin-bottom:14px}
+.recommend-box h4{color:#FA8D0B;margin-bottom:10px}
+@media(max-width:600px){.stat-grid{grid-template-columns:repeat(2,1fr)}.container{padding:16px 12px}}
+</style>
+</head>
+<body>
+<header>
+  <h1><a href="https://vaiskalivuan.github.io/market-radar/" style="color:white;text-decoration:none;">📡 Hahow 市場雷達 — Vais 個人版</a></h1>
+  <p>2026-04-19（週日）｜自動產出報告</p>
+  <span class="personal-badge">🔐 個人版 — 含私下觀察名單</span>
+</header>
+
+<div class="container">
+
+<!-- 摘要 -->
+<div class="stat-grid">
+  <div class="stat-card"><div class="stat-num">25</div><div class="stat-label">Vais 追蹤中人選</div></div>
+  <div class="stat-card"><div class="stat-num">11</div><div class="stat-label">🔥 正在推進（dashboard）</div></div>
+  <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">⚡ 本週重大動態</div></div>
+  <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">鮭魚推薦接觸</div></div>
+</div>
+
+<div class="card card-orange" style="border:2px solid #FA8D0B">
+  <strong>🎯 Vais 本週重點行動清單</strong>
+  <ul style="margin-top:10px;padding-left:18px;font-size:.87rem">
+    <li style="margin-bottom:6px">⚡ <strong>KIMIKO</strong>：4/17 第二次提案會議完成 → 等 JJ 回報 → 群組跟進 FAQ 機制說明</li>
+    <li style="margin-bottom:6px">⚡ <strong>Hiroshi（鮭魚）</strong>：已發 4 個會議時段給老師 → 等選時段開會</li>
+    <li style="margin-bottom:6px">⚡ <strong>黃山料</strong>：新書《擁有過，就好》正延燒 → 可發 follow up（3/31 邀約信已寄）</li>
+    <li style="margin-bottom:6px">📝 <strong>敏迪選讀</strong>：鄭習會+伊朗等國際議題強 → 推進紅隊評估、定案切角</li>
+    <li style="margin-bottom:6px">📝 <strong>連俞涵</strong>：組內提案簡報完成 → 準備發邀約信</li>
+    <li style="margin-bottom:6px">📝 <strong>珊迪兔</strong>：邀約信定稿完成 → 本週發出</li>
+    <li style="margin-bottom:6px">📝 <strong>HackBear 泰瑞</strong>：Pitch 簡報 v3 完成（31 頁）→ 帶簡報跟 Terry 提案</li>
+    <li style="margin-bottom:6px">📝 <strong>洪仲清</strong>：情緒界限切角 → 持續研究 → 撰寫邀約信</li>
+    <li style="margin-bottom:6px">📝 <strong>張盛舒｜命理</strong>：科技紫微「廉貞化忌」2026 流年推出，鋪墊素材到位</li>
+    <li style="margin-bottom:6px">✅ 跟進 <strong>吳哲宇</strong>（合約 4/2 已寄）、<strong>Edo 導演</strong>（合約 4/1 已寄）進度</li>
+    <li style="margin-bottom:6px">🤔 <strong>The DoDo Men</strong>：4 月中再接觸，本月底前給對方想法</li>
+  </ul>
+</div>
+
+<!-- 排行榜 -->
+<div class="section">
+  <div class="section-title">📚 排行榜觀察</div>
+
+  <div class="card card-teal">
+    <strong>📖 博客來近期新書竄榜（2026 年 1-4 月）</strong>
+    <p style="font-size:.82rem;color:#888;margin:4px 0 10px">鎖定近 3 個月內新上架、社群討論度高的新書</p>
+    <table>
+      <tr><th>書名</th><th>作者</th><th>出版</th><th>關注原因 + 人選連結</th></tr>
+      <tr>
+        <td class="hit">《擁有過，就好》 🎯</td>
+        <td>黃山料</td>
+        <td>2026/春</td>
+        <td><strong>命中</strong>：Vais 邀約信已寄（3/31）；陪伴型文字延燒，IG 89 萬</td>
+      </tr>
+      <tr>
+        <td class="hit">《主角模式》 🎯</td>
+        <td>樊登</td>
+        <td>2026/初</td>
+        <td>首度登台；Charlene 手上 CMoney 兩案受益</td>
+      </tr>
+      <tr>
+        <td>《人生沒有標準答案，你不必為難自己》</td>
+        <td>申高恩（心理學博士）</td>
+        <td>2026/3/24</td>
+        <td>內耗議題；韓國暢銷書台版｜<span class="hit">連結：洪仲清、蘇絢慧</span></td>
+      </tr>
+      <tr>
+        <td>《活到 100 歲還是會很快樂》</td>
+        <td>李根厚</td>
+        <td>2026/1/27</td>
+        <td>熟齡自主，銀髮市場延續｜<span class="hit">連結：鄧惠文、蘇絢慧</span></td>
+      </tr>
+      <tr>
+        <td>《出海：台灣企業大未來》</td>
+        <td>簡立峰</td>
+        <td>2026/1/1</td>
+        <td>企業國際化 × 鄭習會議題；商管類回溫</td>
+      </tr>
+      <tr>
+        <td>《趨勢先行》</td>
+        <td>廖仁傑</td>
+        <td>2026/4/2</td>
+        <td>ETF 熱潮下金融指標類需求｜<span class="hit">連結：柴鼠兄弟</span></td>
+      </tr>
+      <tr>
+        <td>《勇敢告別的人，生活會獎勵一場新的開始》</td>
+        <td>Peter Su（作家彼得蘇）</td>
+        <td>2026/春</td>
+        <td>⚠️ 作家彼得蘇，<strong>非本開發人選的 Peter（產品經理）</strong></td>
+      </tr>
+    </table>
+    <p style="font-size:.8rem;margin-top:8px;color:#c53030">⚠️ 提醒：排行榜出現「彼得蘇」→ 那是作家 Peter Su（心理勵志書籍），不是 Vais 開發中的 Peter（PM × AI）</p>
+  </div>
+
+  <div class="card card-teal">
+    <strong>🎙️ Podcast 排行（知識型）</strong>
+    <table>
+      <tr><th>#</th><th>節目</th><th>主持人</th><th>動態 + 人選連結</th></tr>
+      <tr><td>1</td><td>百靈果 News</td><td>凱莉、Ken</td><td>900+ 集三大旗艦｜（不開發名單）</td></tr>
+      <tr><td>2</td><td>股癌</td><td>謝孟恭</td><td>台股 3 萬點熱潮｜（不開發名單）</td></tr>
+      <tr><td>3</td><td class="hit">敏迪選讀 🎯</td><td>敏迪</td><td>🎯 命中！Vais 開發中；389 集、本週鄭習會+伊朗議題話題滿滿</td></tr>
+      <tr><td>4</td><td>唐陽雞酒屋</td><td>唐綺陽</td><td>占星常青</td></tr>
+      <tr><td>5</td><td>大人的 Small Talk</td><td>Joe, Bryan</td><td>職場知識型</td></tr>
+      <tr><td>6</td><td>哇賽心理學</td><td>—</td><td>心理科普｜<span class="hit">與洪仲清潛在競品關係</span></td></tr>
+      <tr><td>7</td><td>台灣通勤第一品牌</td><td>—</td><td>生活型</td></tr>
+      <tr><td>8</td><td>郝聲音</td><td>郝旭烈</td><td>財務思維</td></tr>
+      <tr><td>9</td><td>財報狗</td><td>—</td><td>產業深度</td></tr>
+      <tr><td>10</td><td>口說英語通</td><td>—</td><td>英語學習</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-teal">
+    <strong>📚 線上課程平台動態</strong>
+    <p style="font-size:.88rem;margin-top:6px">• <strong>PressPlay + YOTTA</strong> 整併為華語最大知識平台（1.4M 學員、2,100+ 課程），內容艦隊 150+ 合作。<br>
+    • <strong>SAT</strong> 精品化策略持續；2,880-15,800 元一次買斷。<br>
+    • <strong class="hit">CMoney 攜手樊登</strong>，近 200 位 KOL 齊聚新書發表會 🎯 — Charlene 兩案機會窗。</p>
+  </div>
+</div>
+
+<!-- 本週熱議 -->
+<div class="section">
+  <div class="section-title">💬 本週社群熱議（精選 5 題）</div>
+
+  <div class="card card-navy">
+    <strong><span class="hot3"></span> 鄭習會重啟兩岸對話</strong><span class="tag tag-gray">政治</span>
+    <p style="font-size:.9rem;margin-top:6px">4/10 鄭麗文 × 習近平會面；中性聲量 97%、好感度 0.79，民意觀望中。</p>
+    <p class="private-note">🔐 Vais 切角：<strong>敏迪、劉玉皙</strong>都能接住國際政治話題，敏迪這週本就是她的重點節目；可考慮做為跟敏迪二次接觸的話題切點。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong><span class="hot3"></span> 白沙屯媽祖進香 46 萬人創新高</strong><span class="tag tag-gray">文化</span>
+    <p style="font-size:.9rem;margin-top:6px">4/12 起駕 8 天 7 夜，高鐵嘉義 +46%，4/19 今日是回鑾日。</p>
+    <p class="private-note">🔐 信仰經濟強 → 鮭魚 <strong>奇美博物館（法老展）</strong> 可旁敲；旅行類 <strong>連俞涵</strong>（閱讀陪伴）可借題。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong><span class="hot3"></span> 台股 3 萬點 + AI ETF 熱潮</strong><span class="tag tag-gray">財經</span>
+    <p style="font-size:.9rem;margin-top:6px">柴鼠兄弟 FQ&A 124「2025 ETF 費用率」+ 126「009816」話題活躍。</p>
+    <p class="private-note">🔐 Vais 切角：<strong>柴鼠兄弟</strong>本週數據強，可評估開發信時機；<strong>Terry</strong> 切角 A（投資）也利好。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong><span class="hot2"></span> Threads 全球第一重鎮在台灣</strong><span class="tag tag-gray">科技</span>
+    <p style="font-size:.9rem;margin-top:6px">發文量超越 FB；台灣用戶佔全球 22%，年成長 1,294%。</p>
+    <p class="private-note">🔐 重新評估 <strong>苗博雅</strong>（Threads 35.7 萬成長最快）的切角可行性；自媒體重建題材值得帶進組內。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong><span class="hot2"></span> Kling AI + Vibe Coding 多平台併用潮</strong><span class="tag tag-gray">科技</span>
+    <p style="font-size:.9rem;margin-top:6px">Claude / Gemini / Kling 三強瓜分市場；ChatGPT 市佔降至 64.5%；工具組合拳成主流。</p>
+    <p class="private-note">🔐 Vais 切角：<strong>Terry</strong> 切角 B「AI 時代工程師生存指南」題材強；可結合 Threads 題材做推進簡報。</p>
+  </div>
+</div>
+
+<!-- Vais 追蹤中人選 -->
+<div class="section">
+  <div class="section-title">👥 Vais 追蹤中人選動態</div>
+
+  <div class="section-header-vais">🔥 Dashboard 正在推進（11 人）</div>
+
+  <div class="candidate-row">
+    <div class="candidate-name"><span class="alert">⚡</span> 黃山料 — 人生定錨（類訂閱）<span class="hit">🎯</span></div>
+    <div class="candidate-meta"><span class="pipeline">開發信邀約</span> ｜3/31 已寄，等老師回覆</div>
+    <div class="candidate-update">《擁有過，就好》熱賣 × 陪伴敘事延續；可考慮 follow up 一封恭喜信。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name"><span class="alert">⚡</span> KIMIKO — 體態（錄播）</div>
+    <div class="candidate-meta"><span class="pipeline">合作洽談</span> ｜4/17 第二次提案會議完成</div>
+    <div class="candidate-update">JJ 彙報評估中；港媒 HK01 新報導（44 歲幼川字腹肌），公眾話題度仍強。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name"><span class="alert">⚡</span> Hiroshi — 日文發音升級版（鮭魚）</div>
+    <div class="candidate-meta"><span class="pipeline">鮭魚</span> ｜4/17 回信附 4 個會議時段</div>
+    <div class="candidate-update">老師主動來信問合約；等選時段。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">連俞涵 — 閱讀陪伴（類訂閱）</div>
+    <div class="candidate-meta"><span class="pipeline">提案</span> ｜組內提案簡報完成</div>
+    <div class="candidate-update">2026 國際書展多本著作推廣；Podcast《山羌閱覽室》持續週更。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">珊迪兔 — 家庭理財（類訂閱）</div>
+    <div class="candidate-meta"><span class="pipeline">邀約信定稿</span> ｜待發</div>
+    <div class="candidate-update">4 月發「金錢焦慮 × 匱乏思維」系列；IG 互動穩定。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">敏迪選讀 — 批判思考 / 台灣史 <span class="hit">🎯</span></div>
+    <div class="candidate-meta"><span class="pipeline">討論中</span> ｜紅隊評估</div>
+    <div class="candidate-update">Podcast 389 集；本週鄭習會、伊朗題材強。<strong class="hit">本週開發信初稿最佳時機</strong>。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">Peter — PM × AI（類訂閱）</div>
+    <div class="candidate-meta"><span class="pipeline">長期經營</span> ｜5 月老師回來</div>
+    <div class="candidate-update">⚠️ 留意同名異人：作家 Peter Su 新書上市，非本人選。Due 4/30 跟進。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">HackBear 泰瑞 — ★切角 B 主推</div>
+    <div class="candidate-meta"><span class="pipeline">提案準備</span> ｜Pitch 簡報 v3（31 頁）</div>
+    <div class="candidate-update">AI Coding × Vibe Coding 議題強；YouTube EP195 持續曝光。可帶簡報推進。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">温若喬 — 台語（錄播）</div>
+    <div class="candidate-meta"><span class="pipeline">邀約信已寄</span> ｜Portaly 表單</div>
+    <div class="candidate-update">與鄭順聰合譯《浪鳥集》持續發酵；等老師回覆。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">Edo 導演 — 旅拍電影感（錄播）</div>
+    <div class="candidate-meta"><span class="pipeline">CPC</span> ｜合約 4/1 已寄</div>
+    <div class="candidate-update">推進簽約；預計 5-6 月開拍。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">Kenji 群募流 — 電商行銷（類訂閱，鮭魚）</div>
+    <div class="candidate-meta"><span class="pipeline">CPC</span> ｜老師評估 loading 中</div>
+    <div class="candidate-update">主題方向確認中（趨勢+案例交替）→ 等問卷。</div>
+  </div>
+
+  <div class="section-header-vais" style="margin-top:20px">📋 已提案 / 已完成</div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">The DoDo Men — 挑戰方法論</div>
+    <div class="candidate-meta"><span class="pipeline">合作洽談</span> ｜4 月中再接觸</div>
+    <div class="candidate-update">150 萬訂閱續累；本月底前需給對方想法，卡關中。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">張景嵐 — 藝術靜心</div>
+    <div class="candidate-meta"><span class="pipeline">提案</span> ｜已寄信給經紀人</div>
+    <div class="candidate-update">等回覆。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">黑熊學院 — 民防開發</div>
+    <div class="candidate-meta"><span class="pipeline">合作洽談</span> ｜4/2 新開發信</div>
+    <div class="candidate-update">「警報響了，然後呢？」即時行動層課程；等回覆。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">吳哲宇 — 新媒體藝術（雙邊調整）</div>
+    <div class="candidate-meta"><span class="pipeline">CPC</span> ｜合約 4/2 已寄</div>
+    <div class="candidate-update">等老師回覆約會議。</div>
+  </div>
+
+  <div class="section-header-vais" style="margin-top:20px">🔍 研究/觀察中（重點）</div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">洪仲清 — 情緒界限 <span class="tag tag-teal">A-</span></div>
+    <div class="candidate-meta"><span class="pipeline">研究中</span></div>
+    <div class="candidate-update">首推情緒界限方向；衛福部 15-45 歲心理健康方案延續，心理類開發時機佳。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">張盛舒 — 命理</div>
+    <div class="candidate-meta"><span class="pipeline">研究中</span></div>
+    <div class="candidate-update">科技紫微網 2026 流年「廉貞化忌」主題已上線；鋪墊素材到位，可啟動邀約信。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">營養師三人選（Ricky / 杯蓋 / Grace）</div>
+    <div class="candidate-meta"><span class="pipeline">邀約信邀約</span> ｜3/27-3/31 已發</div>
+    <div class="candidate-update">走通路價值策略；三人走類訂閱 / 錄播差異化。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">YouTuber Mana — 日文課</div>
+    <div class="candidate-meta"><span class="pipeline">研究中</span></div>
+    <div class="candidate-update">YT 41 萬；與 ZUZU 搭配仍為構想。日文課題材延續。</div>
+  </div>
+
+  <div class="candidate-row">
+    <div class="candidate-name">愛瑞克、電腦玩物 Esor、柴鼠兄弟、米薩</div>
+    <div class="candidate-meta"><span class="pipeline">邀約/研究</span></div>
+    <div class="candidate-update">柴鼠兄弟本週 ETF 題材強；其他三人無重大動態。</div>
+  </div>
+</div>
+
+<!-- 私下觀察名單 -->
+<div class="section">
+  <div class="section-title">🔐 私下觀察名單（僅個人版）</div>
+
+  <div class="card card-purple">
+    <strong>💭 心理 / 陪伴類</strong>
+    <table>
+      <tr><th>人選</th><th>IP</th><th>方向</th><th>本週觀察</th></tr>
+      <tr><td>洪仲清</td><td>A-</td><td>情緒界限</td><td>《不要努力快樂》等書竄榜，與洪方向相呼應；哇賽心理學排榜 #6（潛在競品）</td></tr>
+      <tr><td>鄧惠文</td><td>A+</td><td>榮格/英雄之旅</td><td>努力開發中；《活到 100 歲》讀者群可對應</td></tr>
+      <tr><td>海苔熊</td><td>B+</td><td>依附理論/戀愛</td><td>鮭魚 T4，需確認舊課數據</td></tr>
+      <tr><td>蘇絢慧</td><td>A</td><td>界限/悲傷療癒</td><td>10 月做問卷；申高恩韓國書助攻</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-purple">
+    <strong>💄 美妝 / 體態</strong>
+    <table>
+      <tr><th>人選</th><th>IP</th><th>方向</th><th>本週觀察</th></tr>
+      <tr><td>林可彤</td><td>B+</td><td>凍齡媽媽 / 體態</td><td>Vais 思考中（知識架構強於謝金燕）</td></tr>
+      <tr><td>柳燕</td><td>A-</td><td>科學保養</td><td>女人我最大；Vais 待評估</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-purple">
+    <strong>🌏 日文</strong>
+    <table>
+      <tr><th>人選</th><th>IP</th><th>方向</th><th>本週觀察</th></tr>
+      <tr><td>栗鼠</td><td>C</td><td>日文</td><td>吸粉但還不夠大，持續觀察</td></tr>
+      <tr><td>Elly 日本 Now</td><td>D</td><td>日文</td><td>IG 7K，觀察成長中</td></tr>
+      <tr><td>東京工程師</td><td>C</td><td>日商求職日文</td><td>鮭魚 T4；和田彩花來台本週熱議（日本 × 台灣文化）</td></tr>
+      <tr><td>日本人娜娜</td><td>A-</td><td>旅遊日文 / 文化</td><td>YT 27 萬、IG 21 萬；⚠️ 經紀是 PPA，需確認合約獨家性</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-purple">
+    <strong>🧠 知識 / 時事 / 思辨</strong>
+    <table>
+      <tr><th>人選</th><th>IP</th><th>方向</th><th>本週觀察</th></tr>
+      <tr><td>泛科學 PanSci</td><td>A-</td><td>科學思維工作術</td><td>YT 110 萬，已有自建「泛科學院」；需談互補策略</td></tr>
+      <tr><td>苗博雅</td><td>B+</td><td>思辨力 × 法律人思考</td><td><strong class="hit">Threads 35.7 萬成長最快</strong>；本週 Threads 熱潮利好</td></tr>
+      <tr><td>曾豪駒</td><td>A</td><td>棒球 × 管理</td><td>年底卸任，搭配游舒帆 Gipi 是選項</td></tr>
+      <tr><td>劉玉皙</td><td>B</td><td>地緣風險理財</td><td>新書《地緣風險理財課》2026/3 出版；本週鄭習會、伊朗議題強利好</td></tr>
+      <tr><td>謝金燕</td><td>S</td><td>台語課（雙師）</td><td>組內對藝人沒感，暫緩；浪姐素材保留</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-purple">
+    <strong>🏃 運動 / 跑步</strong>
+    <table>
+      <tr><th>人選</th><th>IP</th><th>方向</th><th>本週觀察</th></tr>
+      <tr><td>徐國峰</td><td>鮭魚</td><td>跑步科學（第二堂）</td><td>Hahow 舊課 4.96 星/4,298 人；需找不同切角</td></tr>
+      <tr><td>徐棟英</td><td>A-</td><td>超慢跑（節拍式）</td><td>PressPlay 6,443 人/4.97 星；差異化切角待討論</td></tr>
+      <tr><td>葉子老師</td><td>B</td><td>超慢跑（猿猴式）</td><td>FB 粉專 36 萬讚；養生 × 身心；線上化難度高</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 鮭魚完整版 -->
+<div class="section">
+  <div class="section-title">🐟 鮭魚完整版 — 推薦接觸名單</div>
+
+  <div class="recommend-box">
+    <h4>⭐ 本週推薦主動接觸（5 位）</h4>
+    <p style="font-size:.88rem;margin-bottom:12px">從 25H2 人選 × 模板參考 × 本週熱點交集中篩出，適合 Vais 主動發信或追蹤：</p>
+    <table>
+      <tr><th>排序</th><th>老師</th><th>舊課表現</th><th>熱點交集</th><th>建議切入點</th></tr>
+      <tr>
+        <td><strong>1</strong></td>
+        <td class="hit">Hiroshi ✅</td>
+        <td>日文發音</td>
+        <td>日本人來台結婚熱議</td>
+        <td>已在進行中（等會議時段）— 優先推進簽約</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>奇美博物館</td>
+        <td>文物/歷史類 731 人</td>
+        <td class="hit">法老大展全台冠軍 🔥🔥🔥</td>
+        <td>寫信給策展團隊，借題法老展詢問新課合作（歷史敘事/博物館導覽）</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>徐棟英（超慢跑）</td>
+        <td>PressPlay 6,443 人/4.97 星</td>
+        <td>徐棟英線也在觀察中</td>
+        <td>差異化切角還沒確認，可先內部對話，確定是否值得正式接觸</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>羅鈞鴻（聲音教練）</td>
+        <td>25H2 需接觸名單</td>
+        <td>Podcast 熱延續</td>
+        <td>聲音 × 說話題材，可對照時刻威宇老師競合，考慮開發信</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>Sherry 雪莉（模板 3,345 人）</td>
+        <td>舊課高學生數</td>
+        <td>女性成長 / 自我經營</td>
+        <td>模板參考高位，可內部評估是否有新切角值得邀約新課</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card card-orange">
+    <strong>📋 25H2 鮭魚全量名單（狀態提醒）</strong>
+    <p style="font-size:.88rem;margin-top:6px"><strong>ING（執行中）</strong>：李歐、溫明輝、洪婉蒨、王介安<br>
+    <strong>有表態</strong>：彭其捷、Particoo、筋肉媽媽、超核心健身、吳永進、子麵、羊毛氈手作實驗室、Alonso、Ada Lin、萊恩、Daisy、workplacemvp、Allan、何孟翰、陳間時光、余建霖、Henry、謝昀庭、徐歡 Cheer、連禾、手族文化村工作室、彭毅弘 Bill<br>
+    <strong>需接觸</strong>：Jayden Lin、江湖人稱 S 姐、吉爾 Jill、理查、劉美幸、洪碁、羅鈞鴻、Hiroshi（進行中）</p>
+  </div>
+
+  <div class="card card-teal">
+    <strong>💡 模板參考（可開新課的候選，學生數 top）</strong>
+    <p style="font-size:.88rem;margin-top:6px">吳永進（5,580）、武敬凱（3,620）、Sherry 雪莉（3,345）、王伯達（2,991）、Paddy Chao 趙培均（2,179）、小深藍（2,064）、B6 速寫男（1,927）、余惟（1,785）、鍾全斌（1,505）、Lōa Ēng-hôa（1,460）、秘密基地戶外（1,438）、Peggy Chen（1,409）、VOFAN（1,332）、郭漢克（1,058）、索艾克（816）、奇美博物館（731）。</p>
+    <p class="private-note">🔐 這些不一定屬於 Vais，但可在組內會議提醒 Momo、Charlene 等 assignee 留意本週熱點交集。</p>
+  </div>
+</div>
+
+<!-- Vais 本週建議 -->
+<div class="section">
+  <div class="section-title">💡 Vais 本週建議</div>
+
+  <div class="card card-navy">
+    <strong>① 黃山料 follow up 時機已到</strong>
+    <p style="font-size:.9rem;margin-top:6px">3/31 邀約信已過 20 天；《擁有過，就好》熱度是最自然的再接觸點。可寫一封極簡短的 follow up：「看到新書上市想恭喜，想再提一次陪伴類訂閱」。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong>② 敏迪選讀這週國際議題滿到溢出 → 紅隊評估時機</strong>
+    <p style="font-size:.9rem;margin-top:6px">鄭習會、伊朗 × 美國、中東能源全在敏迪本週節目上；這是向組內說明「切角市場存在」的最佳週。排進紅隊評估。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong>③ Terry（HackBear）帶簡報的 AI × Vibe Coding 時機</strong>
+    <p style="font-size:.9rem;margin-top:6px">本週 Claude / Gemini / Kling AI 三強議題 + 多平台併用成主流，切角 B 論述正好有市場證據。組內可拿本週雷達當佐證簡報。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong>④ 鮭魚接觸新題目：奇美博物館</strong>
+    <p style="font-size:.9rem;margin-top:6px">法老展是 2026 討論度冠軍；雖然不在 Vais 主要名單，但 Vais 負責鮭魚開發 → 主動寫信（文物 × 歷史敘事 × 博物館導覽）是可嘗試的突破點。</p>
+  </div>
+
+  <div class="card card-navy">
+    <strong>⑤ DoDoMen 卡關要有個解法</strong>
+    <p style="font-size:.9rem;margin-top:6px">本月底前要給對方想法。本週可整理 3 個可能方向給 Vais 老闆 / 組內討論：挑戰方法論、SOP、生活實驗。</p>
+  </div>
+</div>
+
+<div style="text-align:center;margin:40px 0 20px;font-size:.8rem;color:#aaa">自動產出 by Claude · Hahow 課程開發團隊 · 2026-04-19（Vais 個人版）</div>
+
+</div>
+</body>
+</html>

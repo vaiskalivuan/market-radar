@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📡 Hahow 市場雷達 — 全團隊版 2026-04-13</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,'Noto Sans TC',sans-serif;background:#f0faf8;color:#333;line-height:1.6}
+header{background:linear-gradient(135deg,#1F497D 0%,#0ADAB2 100%);color:white;padding:40px 24px 32px;text-align:center}
+header h1{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+header p{opacity:.85;font-size:.95rem}
+.container{max-width:960px;margin:0 auto;padding:28px 20px}
+.section{margin-bottom:36px}
+.section-title{font-size:1.15rem;font-weight:700;color:#1F497D;margin-bottom:16px;padding-bottom:8px;border-bottom:3px solid #0ADAB2}
+.card{background:white;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card-orange{border-left:4px solid #FA8D0B}
+.card-teal{border-left:4px solid #0ADAB2}
+.card-navy{border-left:4px solid #1F497D}
+.card-red{border-left:4px solid #e53e3e}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px}
+.stat-card{background:white;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stat-num{font-size:2rem;font-weight:800;color:#0ADAB2}
+.stat-label{font-size:.82rem;color:#666;margin-top:4px}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;margin:2px}
+.tag-orange{background:#fff3e0;color:#FA8D0B}
+.tag-teal{background:#e0faf4;color:#0a9d80}
+.tag-navy{background:#e8eef7;color:#1F497D}
+.tag-red{background:#fee;color:#c53030}
+.tag-gray{background:#f0f0f0;color:#555}
+.hit{color:#FA8D0B;font-weight:600}
+.alert{color:#e53e3e;font-weight:600}
+.pipeline{font-size:.8rem;padding:3px 10px;border-radius:20px;background:#f0faf8;color:#0a9d80;font-weight:600;border:1px solid #0ADAB2}
+.assignee-group{margin-bottom:28px}
+.assignee-header{background:linear-gradient(90deg,#1F497D,#2a5f9e);color:white;padding:10px 16px;border-radius:8px 8px 0 0;font-weight:700;font-size:.95rem}
+.candidate-row{background:white;border-bottom:1px solid #f0faf8;padding:14px 16px}
+.candidate-row:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.candidate-name{font-weight:700;color:#1F497D;font-size:.95rem}
+.candidate-meta{font-size:.8rem;color:#888;margin-top:2px}
+.candidate-update{font-size:.85rem;color:#444;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#1F497D;color:white;padding:10px 12px;text-align:left}
+td{padding:10px 12px;border-bottom:1px solid #f0faf8;background:white}
+tr:last-child td{border-bottom:none}
+.hot1::before{content:"🔥"}
+.hot2::before{content:"🔥🔥"}
+.hot3::before{content:"🔥🔥🔥"}
+.target::before{content:"🎯 ";color:#FA8D0B}
+.major::before{content:"⚡ ";color:#e53e3e}
+a{color:#0a9d80;text-decoration:none}
+a:hover{text-decoration:underline}
+.salmon-badge{background:#FA8D0B;color:white;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:700}
+.summary-box{background:white;border:2px solid #0ADAB2;border-radius:12px;padding:20px;margin-bottom:28px}
+.summary-box h3{color:#1F497D;margin-bottom:10px;font-size:1rem}
+.summary-box ul{padding-left:18px}
+.summary-box li{margin-bottom:6px;font-size:.9rem}
+@media(max-width:600px){.stat-grid{grid-template-columns:repeat(2,1fr)}.container{padding:16px 12px}}
+</style>
+</head>
+<body>
+<header>
+  <h1><a href="https://vaiskalivuan.github.io/market-radar/" style="color:white;text-decoration:none;">📡 Hahow 市場雷達 — 全團隊版</a></h1>
+  <p>2026-04-13（週一）｜自動產出報告</p>
+</header>
+
+<div class="container">
+
+<!-- 本週摘要 -->
+<div class="stat-grid">
+  <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">社群熱門話題</div></div>
+  <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">新書趨勢</div></div>
+  <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">⚡ 重大候選人動態</div></div>
+  <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">課程相關趨勢</div></div>
+</div>
+
+<div class="summary-box">
+  <h3>📊 本週重點摘要</h3>
+  <ul>
+    <li><span class="alert">⚡</span> <strong>吳哲宇</strong>「taiwan.md」開源知識庫計畫引發廣泛關注，結合程式×藝術×台灣敘事，課程切角鮮明。合約已4/2寄出，等待回覆。</li>
+    <li><span class="alert">⚡</span> <strong>黑熊學院</strong>持續開課（資安實戰、Meshtastic工作坊），國際合作備忘錄動作積極，4/2新課程開發信已開啟新對話。</li>
+    <li><span class="alert">⚡</span> <strong>Sam Tsai（Vibe Coding）</strong>「Vibe Coding」被柯林斯英文字典選為2026年度詞彙，議題能量爆棚，CPC推進中。</li>
+    <li><span class="alert">⚡</span> <strong>立達徵信社</strong>與韓國偵探機構簽署合作備忘錄，國際化布局明確，問卷投放中。</li>
+    <li>Threads在台灣用量超越Facebook，成全球第一重鎮（占全球22%），對課程推廣與創作者觸及有重大意涵。</li>
+    <li>AI應用規劃師、ESG碳盤查、長照市場為2026年台灣三大職場技能缺口，均有課程商機。</li>
+  </ul>
+</div>
+
+<!-- 排行榜 -->
+<div class="section">
+  <div class="section-title">📚 排行榜觀察</div>
+
+  <div class="card card-teal">
+    <strong>📖 博客來近期新書竄榜（2026年2-4月）</strong>
+    <p style="font-size:.82rem;color:#888;margin:6px 0 10px">以下為近期新上架書籍，非長年霸榜的長銷書</p>
+    <table>
+      <tr><th>書名</th><th>作者</th><th>出版時間</th><th>關注原因</th></tr>
+      <tr><td>《不要努力快樂》</td><td>奧利佛·柏克曼</td><td>2026/3/18</td><td>全球熱議；正向成癮反動浪潮，討論「越想振作越痛苦」</td></tr>
+      <tr><td>《人生沒有標準答案，你不必為難自己》</td><td>申高恩（心理學博士）</td><td>2026/3/24</td><td>自我療癒×內耗議題；韓國暢銷書台版，IG廣傳</td></tr>
+      <tr><td>《也許你該找人聊聊》（三版）</td><td>蘿蕊·葛利布</td><td>2026/3/25</td><td>心理諮商經典改版回榜，心理健康議題持續熱</td></tr>
+      <tr><td>《癮行時代》</td><td>蘇琮祺（諮商心理師）</td><td>2026/3/27</td><td>本土心理師著作；認識「癮」並解開內心困局</td></tr>
+      <tr><td>《抉擇的智慧》</td><td>蘇拾瑩</td><td>2026/2/5</td><td>52篇生命故事，高齡讀者反應熱烈</td></tr>
+    </table>
+    <p style="font-size:.8rem;margin-top:8px;color:#888">⚠️ 長銷書《我可能錯了》仍為2026年總榜榜首，對開發不具新資訊價值，略過。</p>
+  </div>
+
+  <div class="card card-teal">
+    <strong>🎙️ 台灣 Podcast 排行（知識型）</strong>
+    <table>
+      <tr><th>#</th><th>節目</th><th>主持人</th><th>本週動態</th></tr>
+      <tr><td>1</td><td>百靈果 News</td><td>凱莉、Ken</td><td>雙語國際時事，超900集，三大旗艦之一</td></tr>
+      <tr><td>2</td><td>股癌 (Gooaye)</td><td>謝孟恭</td><td>投資理財，多年榜單常客</td></tr>
+      <tr><td>3</td><td>唐陽雞酒屋</td><td>唐綺陽</td><td>占星，2024金鐘首屆冠軍，穩佔前5</td></tr>
+      <tr><td>4</td><td><strong class="hit">禎甄要chat內</strong> 🚀</td><td>胡小禎、李佩甄</td><td>女性成長，快速攀升，社群互動強</td></tr>
+      <tr><td>5</td><td>博音</td><td>曾博恩</td><td>脫口秀×正能量，穩定表現</td></tr>
+      <tr><td>6</td><td>財報狗</td><td>—</td><td>深度產業分析，投資族常備</td></tr>
+      <tr><td>7</td><td>哇賽心理學</td><td>—</td><td>心理科普，近期話題有交集</td></tr>
+      <tr><td>8</td><td>蒼藍鴿</td><td>—</td><td>醫療健康，穩定聽眾基礎</td></tr>
+      <tr><td>9</td><td>法客電台 Plain Law Radio</td><td>—</td><td>法律知識普及</td></tr>
+      <tr><td>10</td><td>通勤學英語 15Mins Today</td><td>—</td><td>英語學習，通勤族剛需</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-teal">
+    <strong>💻 線上課程平台動態</strong>
+    <div style="margin-top:10px">
+      <p><span class="tag tag-teal">Hahow</span> 2月推出課程文字稿功能（學習筆記）+ 測驗Beta版，持續優化學習體驗</p>
+      <p style="margin-top:8px"><span class="tag tag-orange">PressPlay Academy</span> <span class="alert">⚡</span>正式整併YOTTO課程資源，朝「亞洲最大中文知識聚集地」定位推進；140萬+學生、2,100+課程</p>
+      <p style="margin-top:8px"><span class="tag tag-navy">SAT知識衛星</span> 維持精品高端定位；2024年破7億台幣、TIME EdTech Rising Stars第二名，2025年首屆知識衛星高峰會已辦</p>
+    </div>
+  </div>
+</div>
+
+<!-- 課程趨勢 -->
+<div class="section">
+  <div class="section-title">🔥 課程相關趨勢</div>
+
+  <div class="card card-orange">
+    <strong>1. AI應用規劃師成職場急缺人才 #1</strong>
+    <p style="font-size:.87rem;margin-top:6px">「AI應用規劃師」成2026年五大急缺人才之首，企業急需能將AI轉化為商業應用的人才。此職位不需理工背景，重視AI思維與溝通表達。LinkedIn報告顯示創辦人頭銜需求暴增69%，反映企業結構性轉型。</p>
+    <p style="font-size:.82rem;margin-top:6px;color:#888">課程切角：AI工作術、零基礎ChatGPT應用、企業AI導入策略｜人選連結：<span class="hit">HackBear泰瑞（AI×工程師思維）、Sam Tsai（Vibe Coding）、酒Ann（Google Workspace）</span></p>
+  </div>
+
+  <div class="card card-orange">
+    <strong>2. ESG永續×碳盤查強制需求爆發</strong>
+    <p style="font-size:.87rem;margin-top:6px">2026年起台灣上市櫃公司全面強制ESG永續報告書，碳盤查、永續揭露成企業急迫課題。ESG顧問需求爆發，薪資優勢明顯，企業內訓預算大增。</p>
+    <p style="font-size:.82rem;margin-top:6px;color:#888">課程切角：ESG入門、碳管理101、永續轉型工作坊</p>
+  </div>
+
+  <div class="card card-orange">
+    <strong>3. 長照市場×銀髮產業千億商機</strong>
+    <p style="font-size:.87rem;margin-top:6px">長照3.0於2026年啟動第二階段，2028年預估6.7萬人力缺口。高齡化催生培訓需求，從照護技能到管理能力到創業課程市場都在擴張。</p>
+    <p style="font-size:.82rem;margin-top:6px;color:#888">課程切角：長照入門、高齡健康管理、銀髮市場創業｜人選連結：<span class="hit">王偉全院長（黴菌/健康）、蘇絢慧（心理）</span></p>
+  </div>
+
+  <div class="card card-orange">
+    <strong>4. 心理健康需求升至企業KPI</strong>
+    <p style="font-size:.87rem;margin-top:6px">衛福部2026年推行15-45歲青壯世代免費心理諮商（每人3次），企業友善職場政策從單點福利轉向全員心理安全。諮商心理師需求持續成長，情緒管理、親職溝通類課程受採購青睞。</p>
+    <p style="font-size:.82rem;margin-top:6px;color:#888">人選連結：<span class="hit">洪仲清（情緒界限）、蘇絢慧（悲傷療癒）、海苔熊（依附理論）</span></p>
+  </div>
+
+  <div class="card card-orange">
+    <strong>5. Threads台灣崛起×KOC信任行銷轉型</strong>
+    <p style="font-size:.87rem;margin-top:6px">Threads在台灣用量於4月首度超越Facebook，台灣成全球第一重鎮（占全球22%）。公域流量轉向私域圈地，微型KOC（Key Opinion Consumer）信任網絡取代大型網紅效益。</p>
+    <p style="font-size:.82rem;margin-top:6px;color:#888">課程切角：社群媒體行銷、KOC微影響力課程、自媒體經營</p>
+  </div>
+</div>
+
+<!-- 社群熱議 -->
+<div class="section">
+  <div class="section-title">💬 本週社群熱議（2026/04/07–04/13）</div>
+
+  <table>
+    <tr><th>熱度</th><th>話題</th><th>類別</th><th>摘要</th><th>課程機會</th></tr>
+    <tr>
+      <td class="hot3"></td>
+      <td><strong>白沙屯媽祖進香</strong></td>
+      <td><span class="tag tag-teal">宗教/文化</span></td>
+      <td>4/12深夜起駕，8天7夜旅程，預計4/16抵北港朝天宮。每年數十萬信眾，Threads/PTT廣泛分享朝聖紀錄。</td>
+      <td>台灣民俗文化、宗教旅遊規劃</td>
+    </tr>
+    <tr>
+      <td class="hot3"></td>
+      <td><strong>鄭習會（國共最高領導人會面）</strong></td>
+      <td><span class="tag tag-navy">政治</span></td>
+      <td>國民黨主席鄭麗文訪中，與習近平睽違10年會面，習提「4點意見」。PTT政治版轉發破千，引發兩岸路線論戰。</td>
+      <td>地緣政治入門、批判思考</td>
+    </tr>
+    <tr>
+      <td class="hot3"></td>
+      <td><strong>2026九合一選舉備戰啟動</strong></td>
+      <td><span class="tag tag-navy">政治</span></td>
+      <td>11/28縣市長議員選舉，藍綠白全面進入備戰。人選陸續公布，鄉民熱議預測。</td>
+      <td>民主選舉制度、公民素養</td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>Threads超越Facebook成台灣No.1</strong></td>
+      <td><span class="tag tag-orange">科技/社群</span></td>
+      <td>Meta Threads在台灣用量首度超越Facebook，台灣占全球用戶22%。公域流量轉向私域圈地，AI審美疲勞問題浮現。</td>
+      <td>🔥 <strong>社群行銷、KOC微影響力、自媒體經營</strong></td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>核電重啟政策大轉彎</strong></td>
+      <td><span class="tag tag-gray">能源/政治</span></td>
+      <td>總統賴清德3/21提及核二、核三具備重啟條件，將評估啟動核電重啟。環保與能源辯論社群討論量百則以上。</td>
+      <td>能源政策、永續發展、ESG</td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>柯文哲/京華城案一審宣判</strong></td>
+      <td><span class="tag tag-red">社會/司法</span></td>
+      <td>3/26一審宣判，沈慶京10年、應曉薇15.5年、柯文哲13年。京華城840%容積率爭議引發法律×政治雙重熱議。</td>
+      <td>法律知識普及、反貪腐教育｜<span class="hit">立達徵信社偵探課</span></td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>台鋼雄鷹×MAMAMOO+ 主題日</strong></td>
+      <td><span class="tag tag-teal">運動/娛樂</span></td>
+      <td>台鋼雄鷹4月主場邀請韓國藝人BTOB、MAMAMOO+登台，棒球×娛樂跨界，Threads購票資訊大量分享。</td>
+      <td>體育行銷、粉絲經濟、活動企劃</td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>高雄春捲中毒案擴大至157人</strong></td>
+      <td><span class="tag tag-red">食品安全</span></td>
+      <td>衛生單位全面調查，PTT食安版大量討論廚房衛生與採購安全，消費者意識高漲。</td>
+      <td>食品安全知識、居家廚房管理</td>
+    </tr>
+    <tr>
+      <td class="hot2"></td>
+      <td><strong>氣炸鍋推薦熱潮</strong></td>
+      <td><span class="tag tag-teal">生活/消費</span></td>
+      <td>Dcard多篇推薦文，6款氣炸鍋對比，聚焦減油健康烹飪。熱度持續，轉分享量高。</td>
+      <td>健康烹飪、廚房技能</td>
+    </tr>
+    <tr>
+      <td class="hot1"></td>
+      <td><strong>駕照考試改革：取消是非題</strong></td>
+      <td><span class="tag tag-gray">社會/教育</span></td>
+      <td>公路局推動2026年起汽機車考照筆試全面改為單選題，學生族群討論熱烈。</td>
+      <td>普通，不優先</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 人選動態 -->
+<div class="section">
+  <div class="section-title">👥 人選動態追蹤（依 Assignee 分組）</div>
+
+  <!-- Vais -->
+  <div class="assignee-group">
+    <div class="assignee-header">Vais Ljakalevuan（vaisljaka@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ 吳哲宇｜新媒體藝術 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span> ｜ 類訂閱</div>
+      <div class="candidate-update"><span class="alert">⚡ 重大動態：</span>3/18發起「taiwan.md」開源知識庫計畫，由台灣人主導定義台灣敘事，GitHub公開授權，引發廣泛媒體關注。合約已調完4/2寄給老師，等回覆。課程切角：AI×新媒體藝術×台灣主體性，議題鮮明。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ 艾德導演（Edo Lo）｜旅拍電影感 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span> ｜ 錄播課</div>
+      <div class="candidate-update">合約已調完4/1寄給老師，等待回覆。Dismy Image Production創辦人，旅拍電影感風格獨特。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Kenji｜電商行銷×群募流 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span> ｜ 類訂閱</div>
+      <div class="candidate-update">老師評估自己工作loading中，追蹤中。持續在Substack討論電商趨勢（美國通膨×電商衝擊），並運營群募培訓課程。電商主題因2026年TikTok Shop政策變化更受關注。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">KIMIKO｜體態調整</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">簡報v3完成，等夏琳協助約會議。體態課程市場熱度不減，與本週健康生活話題有交集。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ 黑熊學院｜民防新課 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ CPC 類訂閱</div>
+      <div class="candidate-update"><span class="alert">⚡</span> 4/9–5/7「資安實戰：基礎防禦」課程開課、4/11「Meshtastic入門工作坊」舉辦，持續擴大培訓量能。4/2信件已開啟新課程開發對話。與韓國偵探機構建立國際協作網絡（備忘錄）。目標培訓300萬「黑熊戰士」。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">dodomen / The DoDo Men｜軟技能</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ Squad 錄播課+類訂閱</div>
+      <div class="candidate-update">[卡關] 開完會，再想一下要怎麼開發，預抓本月底給對方想法。推出2026年度日曆「世界Do一圈」，Instagram 621K粉絲，周邊商品持續經營。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">洪震宇｜精準提問×現場力 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ CPC 錄播課+類訂閱</div>
+      <div class="candidate-update">2nd Priority，尚未開始推進。老師新書《精準提問2》5月出版，時機到時可作為開發切點。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">黃山料｜人生定錨（類訂閱）</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ 類訂閱</div>
+      <div class="candidate-update">0331已發信，等老師回覆。新作《擁有過就好》已出版，2月參加台北國際書展，書市表現可佐證受眾基礎。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">連俞涵｜說書陪伴（類訂閱）</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ Squad 類訂閱</div>
+      <div class="candidate-update">研究完，等待內部確認。2月台北國際書展發表新書《刺蝟抱月亮》，與品牌「山羌閱覽室」合作聯名服飾，媒體曝光高。閱讀×陪伴議題當前共鳴強。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">珊迪兔｜家庭理財（類訂閱）<span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ Squad 類訂閱</div>
+      <div class="candidate-update">3/19已發信，等待回覆。本週「柴鼠兄弟｜基礎投資理財」研究進行中，兩者差異化定位（家庭理財 vs 存股ETF）值得提前想清楚。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Terry（HackBear泰瑞）｜AI時代工程師生存指南</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ CPC</div>
+      <div class="candidate-update">Pitch簡報製作中，等待內部討論。持續在YT、IG、X多平台發佈AI×投資×工程師內容。YT 57萬訂閱。本週「AI應用規劃師急缺」趨勢對切角B（AI時代工程師）有加分。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">敏迪選讀｜批判思考×台灣史</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">討論提案方向中，要寫開發信。4/8更新：涵蓋美伊衝突、川普加薩計畫、英國反中滲透備忘錄，持續穩定更新。本週國際政治話題（鄭習會）高度契合其受眾。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">洪仲清｜情緒界限</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">研究中。心理健康議題本週持續熱，《不要努力快樂》等新書竄榜，顯示台灣受眾對心理相關內容高需求。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Ricky 營養師｜飲食底層邏輯</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ CPC 類訂閱</div>
+      <div class="candidate-update">0327已發信，等待回覆。本週高雄春捲中毒案（157人）引發食品安全關注，有輔助開發的議題背景。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">營養師杯蓋（蕭瑋霖）｜外食族四季飲食</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ CPC 類訂閱</div>
+      <div class="candidate-update">0327已發信。與Ricky差異化（類訂閱 vs 錄播）策略已確定。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">方慈聲 Grace｜心態×飲食×體態</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ CPC</div>
+      <div class="candidate-update">0327已發信給有魚娛樂小哈，等回覆。IG 81K，YTT200瑜伽師資，獨特差異化定位（心態整合）。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">柴鼠兄弟｜基礎投資理財課</div>
+      <div class="candidate-meta"><span class="pipeline">開發信邀約｜尚未開啟對話</span> ｜ Squad</div>
+      <div class="candidate-update">錄播 or 類訂閱研究中。57萬+粉絲，多本著作（ETF、存股）。有《跟著柴鼠減加乘》出版，在經濟日報發文，受眾基礎扎實。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">張景嵐｜大人生活美學</div>
+      <div class="candidate-meta"><span class="pipeline">長期經營｜需待時機</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">0324已寄信push，等對方回覆。老師之前表示「書法印象」還不夠，想再累積一陣子。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Peter（PM×AI）｜AI×產品（五月接洽）</div>
+      <div class="candidate-meta"><span class="pipeline">長期經營｜需待時機</span> ｜ CPC 類訂閱 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-update">老師想先跑電子報，五月回來找Hahow。Due date: 2026-04-30，到時跟進。AI應用規劃師熱潮對PM×AI課程方向有利。<br><span style="font-size:.78rem;color:#c53030">⚠️ 注意：此 Peter 為產品經理，非作家彼得蘇（Peter Su）</span></div>
+    </div>
+  </div>
+
+  <!-- JolinaTu -->
+  <div class="assignee-group">
+    <div class="assignee-header">JolinaTu（jolinatu@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ 立達徵信社｜人性鑑識/偵探教育</div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷投放</span></div>
+      <div class="candidate-update"><span class="alert">⚡</span> 與韓國偵探機構簽署合作備忘錄，國際合作布局擴展。Threads平台討論升溫，業界關注度上升。本週柯文哲司法案件引發法律+偵查議題熱議，時機點佳。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">酒 Ann｜Google Workspace</div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span> ｜ 四月中啟動</div>
+      <div class="candidate-update">問卷製作中，四月中（4/7-4/21）正式啟動。AI工具整合職場技能持續熱，Workspace+AI的組合切角市場驗證明確。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">王偉全院長（超全能診所）｜黴菌</div>
+      <div class="candidate-meta"><span class="pipeline">使用者訪談</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">使用者訪談進行中。健康醫療議題受眾持續穩定，本週食品安全話題對健康類課程有背書效果。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">freddy｜投資理財</div>
+      <div class="candidate-meta"><span class="pipeline">合約談判中</span> ｜ CPC 類訂閱</div>
+      <div class="candidate-update">合約談判進行中，持續追蹤。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">謝哲青｜閱讀美學</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ Squad 錄播+類訂閱</div>
+      <div class="candidate-update">合作洽談中。連俞涵《刺蝟抱月亮》等閱讀相關書籍熱度，顯示閱讀陪伴類課程市場有共鳴。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">立達徵信社｜跨國偵探</div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span></div>
+      <div class="candidate-update">同上立達徵信社，韓國合作備忘錄為本課跨國偵探切角提供很好的故事素材。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">春花媽｜藥輪 ／ 萬鈞｜產業研究 ／ 蘇絢慧｜心理</div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span></div>
+      <div class="candidate-update">問卷製作中，持續推進。蘇絢慧預計10月做問卷，時間軸明確。</div>
+    </div>
+  </div>
+
+  <!-- Charlene Liang -->
+  <div class="assignee-group">
+    <div class="assignee-header">Charlene Liang（charleneliang@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">圈外設計｜UI互動＋AI生成 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">已簽約｜等待進案</span> ｜ CPC 錄播課</div>
+      <div class="candidate-update">已簽約，等待進案啟動。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Allan｜AI 簡報 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合約談判中</span> ｜ Squad 舊課更新+類訂閱</div>
+      <div class="candidate-update">合約談判中。AI應用工具課需求熱，簡報×AI組合有市場。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">筋肉媽媽｜增肌減脂訓練</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span></div>
+      <div class="candidate-update">合作洽談進行中。健身內容持續活躍，2024年底有人生重大動態，持續經營WanTraining，美國ACE認證。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">啾C（物理治療師）</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span></div>
+      <div class="candidate-update">合作洽談中，已進會議待推進。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">潘思璇｜（人生）財報</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">合作洽談中。財務知識課持續受歡迎。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Code Gym｜高效AI工作術 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span> ｜ 錄播+類訂閱</div>
+      <div class="candidate-update">問卷製作中。Ryan「高效AI投資術」已有4,927人驗證市場，AI工作術需求旺盛。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Lenore / 大萬｜阿卡西紀錄</div>
+      <div class="candidate-meta"><span class="pipeline">使用者訪談</span> ｜ Squad 錄播課</div>
+      <div class="candidate-update">使用者訪談進行中。靈性療癒類課程需求穩定。</div>
+    </div>
+  </div>
+
+  <!-- Frank Chien -->
+  <div class="assignee-group">
+    <div class="assignee-header">Frank Chien（frankchien@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">WORD UP｜三原 日文課 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">已簽約｜等待進案</span> ｜ CPC 錄播課</div>
+      <div class="candidate-update">已簽約，等待進案。台語×日文學習需求從語言課程趨勢穩定可見。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ 海總理｜AI 每週實戰案例</div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ Squad 類訂閱</div>
+      <div class="candidate-update">合作洽談中。AI應用規劃師需求爆發背景下，以「每週實戰案例」為主軸的類訂閱切角極具時效性，值得加速推進。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">貝殼放大｜脊慢跑 ／ 品水課</div>
+      <div class="candidate-meta"><span class="pipeline">合約談判中</span> ｜ CPC 雙邊上架</div>
+      <div class="candidate-update">兩門課合約談判中，持續推進。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">Jasper｜主動式投資 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span> ｜ 類訂閱</div>
+      <div class="candidate-update">資料協作中，投資類訂閱課程市場熱度不減。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">六角學院｜n8n、Vibecoding</div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span></div>
+      <div class="candidate-update">問卷製作中。「Vibe Coding」成柯林斯2026年度詞彙，此課程議題能量爆棚，可考慮加速推進。</div>
+    </div>
+  </div>
+
+  <!-- Momo Tseng -->
+  <div class="assignee-group">
+    <div class="assignee-header">Momo Tseng（momotseng@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">彭其捷｜AI+Python 升級高階商業分析師 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">已簽約｜等待進案</span> ｜ CPC 錄播課</div>
+      <div class="candidate-update">已簽約，等待進案。AI+Python技能市場需求極強。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⚡ Sam Tsai｜Vibe Coding</div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span> ｜ 錄播課 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-update"><span class="alert">⚡</span>「Vibe Coding」被柯林斯英文字典選為2026年度詞彙！議題能量爆棚，老師預計EuroSTAR 2026（奧斯陸）演講，國際能見度高。資料協作中，建議趁勢加速進案流程。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">吳永進 AutoCAD <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合約談判中</span> ｜ CPC 錄播課</div>
+      <div class="candidate-update">合約談判中，老師有明確意願。舊課5,574人，有意製作全新2D課程（4月底前完成準備，5月募資）。AutoCAD 2026新版本是時機點。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">空罐王｜插畫 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span> ｜ CPC 舊課更新</div>
+      <div class="candidate-update">台北國際插畫博覽會4/2-5剛結束，現場接觸目標受眾，可評估是否有新內容素材。YT逾200K訂閱，速寫課有大更新討論中。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">🟢 Kai｜AI Coding（Cursor）<span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">Squad 問卷製作</span></div>
+      <div class="candidate-update">問卷製作中。Vibe Coding 2026年度詞彙帶動AI Coding整體關注度上升，市場共鳴強。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">⌛️ Alonso+Shihfei｜Creator Character <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">CPC 資料協作、送審提案</span></div>
+      <div class="candidate-update">課程已錄製10-15%，老師規劃明確。ZBrush/3D角色設計市場穩定。</div>
+    </div>
+  </div>
+
+  <!-- Oscar Du -->
+  <div class="assignee-group">
+    <div class="assignee-header">Oscar Du（oscardu@hahow.in）</div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">MIXXIN｜曲奇放克 ／ VK科技閱讀×Notebook LM <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合約談判中</span> ｜ CPC 錄播課</div>
+      <div class="candidate-update">兩門課合約談判中。科技閱讀×AI工具組合切角符合AI應用趨勢。</div>
+    </div>
+
+    <div class="candidate-row">
+      <div class="candidate-name">香港皇冠 Chef Chu's Kitchen｜港點 <span class="salmon-badge">鮭魚</span></div>
+      <div class="candidate-meta"><span class="pipeline">合作洽談｜已進會議、來回溝通</span></div>
+      <div class="candidate-update">合作洽談中。料理課程需求穩定。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 鮭魚機會雷達 -->
+<div class="section">
+  <div class="section-title">🐟 鮭魚機會雷達</div>
+  <div class="card card-teal">
+    <p style="font-size:.85rem;color:#555;margin-bottom:12px">資料來源：鮭魚名單 25H2人選 + 模板參考 + Asana進行中</p>
+    <table>
+      <tr><th>老師</th><th>方向</th><th>學生數</th><th>意願</th><th>本週動態</th><th>建議</th></tr>
+      <tr>
+        <td><strong>吳永進</strong></td>
+        <td>AutoCAD 2026新課</td>
+        <td>5,580</td>
+        <td><span class="tag tag-teal">有意願</span></td>
+        <td>合約談判中（Momo）</td>
+        <td>繼續談，時機點好</td>
+      </tr>
+      <tr>
+        <td><strong>彭毅弘 Bill</strong></td>
+        <td>AI簡報進階</td>
+        <td>6,931</td>
+        <td><span class="tag tag-teal">有意願</span></td>
+        <td>尚未有最新動態</td>
+        <td>可主動接觸</td>
+      </tr>
+      <tr>
+        <td><strong>超核心健身</strong></td>
+        <td>居家訓練/女性健身進階</td>
+        <td>738</td>
+        <td><span class="tag tag-teal">有意願</span></td>
+        <td>⚡ AI健身數據管理成業界重點，數位化加速</td>
+        <td>🔥 熱點鮭魚，值得重新接觸</td>
+      </tr>
+      <tr>
+        <td><strong>川川</strong></td>
+        <td>TikTok短影音商業應用</td>
+        <td>830</td>
+        <td><span class="tag tag-gray">待確認</span></td>
+        <td>TikTok 2026 Creator Watch List曝光</td>
+        <td>可嘗試接觸</td>
+      </tr>
+      <tr>
+        <td><strong>索艾克 Soac</strong></td>
+        <td>料理×社群內容製作</td>
+        <td>816</td>
+        <td><span class="tag tag-gray">待確認</span></td>
+        <td>YT每週日持續更新，IG 64K</td>
+        <td>可觀察一季</td>
+      </tr>
+      <tr>
+        <td><strong>Lōa Ēng-hôa（阿華師）</strong></td>
+        <td>日常台語會話</td>
+        <td>1,460</td>
+        <td><span class="tag tag-gray">待確認</span></td>
+        <td>台語課需求隨政府台語推廣政策持續升溫</td>
+        <td>🔥 熱點鮭魚，台語話題有共鳴</td>
+      </tr>
+      <tr>
+        <td><strong>空罐王</strong></td>
+        <td>速寫×插畫進階</td>
+        <td>—</td>
+        <td><span class="tag tag-teal">已洽談中</span></td>
+        <td>台北插畫博覽會4/2-5參展（Momo負責）</td>
+        <td>順勢博覽會後推進</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 本週建議 -->
+<div class="section">
+  <div class="section-title">💡 本週開發建議</div>
+  <div class="card card-navy">
+    <p><strong>1. Sam Tsai「Vibe Coding」趁勢加速</strong><br>
+    「Vibe Coding」成2026年度詞彙，議題能量爆棚。現在進案時機點極佳，建議Momo優先推進CPC資料協作到送審階段，避免失去議題紅利期。六角學院的Vibecoding問卷也可同步加速。</p>
+  </div>
+  <div class="card card-navy">
+    <p><strong>2. Vais加快敏迪/洪仲清/Terry的開發信</strong><br>
+    本週社群熱議涵蓋批判思考（鄭習會）、心理健康（新書竄榜）、AI×工程師（趨勢），是這三位候選人開發信的最佳素材時機。建議本週內完成開發信初稿。</p>
+  </div>
+  <div class="card card-navy">
+    <p><strong>3. 超核心健身重新接觸</strong><br>
+    AI健身數據管理、個性化訓練成2026業界重點，超核心健身（有意願、738學生）有良好的時機點做進階課程開發，可主動聯繫確認意願。</p>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:28px 0;font-size:.8rem;color:#aaa;border-top:1px solid #e0f5ef;margin-top:20px">
+  📡 Hahow 市場雷達 — 自動產出 | 2026-04-13 | <a href="https://vaiskalivuan.github.io/market-radar/">查看所有週報</a>
+</footer>
+</div>
+</body>
+</html>
