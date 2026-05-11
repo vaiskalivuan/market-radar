@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📡 Hahow 市場雷達 — 全團隊版 2026/05/11</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, 'Noto Sans TC', 'Helvetica Neue', sans-serif; background: #f0faf8; color: #1a1a1a; line-height: 1.6; }
+  header { background: linear-gradient(135deg, #1F497D 0%, #0ADAB2 100%); color: white; padding: 36px 24px; text-align: center; }
+  header h1 a { color: white; text-decoration: none; }
+  header h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+  header p { opacity: 0.9; font-size: 0.95rem; }
+  .container { max-width: 980px; margin: 0 auto; padding: 28px 20px 60px; }
+  section { background: white; border-radius: 14px; padding: 24px 26px; margin-bottom: 22px; box-shadow: 0 2px 12px rgba(31,73,125,0.08); }
+  h2 { color: #1F497D; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #0ADAB2; }
+  h3 { color: #1F497D; font-size: 1.05rem; font-weight: 700; margin-top: 18px; margin-bottom: 10px; }
+  h4 { color: #FA8D0B; font-size: 0.95rem; font-weight: 700; margin-top: 14px; margin-bottom: 6px; }
+  p { margin-bottom: 8px; font-size: 0.95rem; }
+  ul { margin: 6px 0 12px 20px; }
+  li { margin-bottom: 6px; font-size: 0.93rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .stat { background: linear-gradient(135deg, #f0faf8, #e0f7f3); border-left: 4px solid #0ADAB2; padding: 14px 16px; border-radius: 8px; }
+  .stat .num { font-size: 1.5rem; font-weight: 800; color: #1F497D; }
+  .stat .label { font-size: 0.82rem; color: #555; }
+  .hit { background: #FFF4E0; border-left: 3px solid #FA8D0B; padding: 8px 12px; border-radius: 4px; margin: 6px 0; }
+  .alert { background: #FFEBEB; border-left: 3px solid #D9534F; padding: 8px 12px; border-radius: 4px; margin: 6px 0; }
+  .salmon-hot { color: #D9534F; font-weight: 700; }
+  .tag { display: inline-block; background: #0ADAB2; color: #1F497D; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 6px; }
+  .tag-cat { background: #1F497D; color: white; }
+  .tag-orange { background: #FA8D0B; color: white; }
+  .person-block { background: #f8f9fa; border-left: 3px solid #1F497D; padding: 10px 14px; margin: 8px 0; border-radius: 6px; }
+  .assignee-header { background: #1F497D; color: white; padding: 8px 14px; border-radius: 6px; margin-top: 16px; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.88rem; }
+  th { background: #1F497D; color: white; padding: 8px 10px; text-align: left; }
+  td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8fbfa; }
+  .highlight-num { color: #FA8D0B; font-weight: 700; }
+  a { color: #1F497D; text-decoration: underline; }
+  .footnote { font-size: 0.8rem; color: #888; margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><a href="https://vaiskalivuan.github.io/market-radar/" style="color:white;text-decoration:none;">📡 Hahow 市場雷達 — 全團隊版</a></h1>
+  <p>2026 年 5 月 11 日（W19｜本週一）｜全團隊 Asana 人選 + 排行榜 + 熱門話題追蹤</p>
+</header>
+
+<div class="container">
+
+<!-- §1 本週摘要 -->
+<section>
+  <h2>📊 本週摘要</h2>
+  <div class="stat-grid">
+    <div class="stat"><div class="num">9</div><div class="label">同事追蹤中人選 ≈ 100+</div></div>
+    <div class="stat"><div class="num">8</div><div class="label">本週社群熱議話題</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">熱門趨勢 × 課程切角</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">命中內部名單的市場動態</div></div>
+  </div>
+  <h3>3 句話看本週</h3>
+  <ul>
+    <li><strong>愛爾麗醫美偷拍案延燒</strong>（全台 18 間分店都有針孔），社群憤怒但對「醫美教育課」沒有直接利好；倒是「女性自我保護 / 隱私意識 / 消費維權」是潛在切角。</li>
+    <li><strong>SAT 知識衛星 5/11 啟動 2026 高峰會集資</strong>（32+ 大師），是本週最大競品動態 — 直接衝擊 Hahow 5–6 月集資檔期，建議盯緊他們新講師名單與分潤條件。</li>
+    <li><strong>記憶體/AI 半導體本週密集法說會</strong>（華邦電、M31、群聯）。財經類人選（Terry、Will、王伯達、CMoney 派老師）可結合「AI 投資」切角加溫。</li>
+  </ul>
+</section>
+
+<!-- §2 排行榜觀察 -->
+<section>
+  <h2>📚 排行榜觀察</h2>
+
+  <h3>📖 博客來 — 近期新書（May 2026）</h3>
+  <p style="font-size: 0.88rem; color: #666; margin-bottom: 10px;">⚠️ 本區只列「近 3 個月內出版 / 近期受關注」的新書，常駐長銷書（原子習慣等）不列。</p>
+  <table>
+    <thead><tr><th>分類</th><th>書名</th><th>作者</th><th>近期受關注原因</th></tr></thead>
+    <tbody>
+      <tr><td>商業理財</td><td><strong>《財富階梯》</strong>（The Wealth Ladder）</td><td>Nick Maggiulli（《持續買進》作者新作）</td><td>分六層淨資產階梯談致富策略，承接前作高人氣，五月新書榜熱度高</td></tr>
+      <tr><td>商業理財</td><td>《刷新你的金錢腦：財富自由 5 階梯實戰祕笈》</td><td>—</td><td>「財富自由 5 階梯」與《財富階梯》共振，社群同框討論度上升</td></tr>
+      <tr><td>商業理財</td><td>《學會成為有錢人》</td><td>—</td><td>主打「理財小白」， 12 堂創富金錢課，呼應 Hahow CMoney/Terry/珊迪兔同題</td></tr>
+      <tr><td>心理勵志</td><td><strong>《關係的語言》</strong></td><td>文耀翰（韓國精神科醫師）</td><td>2026/5/6 出版，主軸「從讀心到體心」，與洪仲清/蘇絢慧/蔡宇哲同分眾</td></tr>
+      <tr><td>心理勵志</td><td>《強大自我的情緒管理》</td><td>Ethan Kross（亞馬遜 2025 最佳）</td><td>結合神經科學 × 工具書包裝，是「公信力方法論 + 深層賦能」的範本</td></tr>
+      <tr><td>心理勵志</td><td>《逆境翻身：用心理韌性打造贏家心態》</td><td>陳泰廷（運動心理教練）</td><td>2026/4/8 出版，奧運金牌教練背景，承接「韌性」職場關鍵字</td></tr>
+      <tr><td>心理勵志</td><td>《社交恐懼三十年經典》（克里斯托夫·安德烈等）</td><td>—</td><td>2026/4/30 出版，法國長銷三十年首譯，社群討論度上升</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎙️ Apple Podcast 台灣 Top 10</h3>
+  <ul>
+    <li>1. 百靈果 News｜2. <span class="highlight-num">Gooaye 股癌</span>（投資恆強）｜3. 台灣通勤第一品牌｜4. 聽天下：天下雜誌 Podcast</li>
+    <li>5. 好味小姐開束縛我還你原形｜6. 唐陽雞酒屋（星座）｜7. 姐妹悄悄話 SistersTalkTalkShow</li>
+    <li>8. 那些電影教我的事｜9. <span style="color:#FA8D0B;font-weight:700;">敏迪選讀</span>（Vais 觀察名單，2026/04 暫緩）｜10. 轉角國際新聞 Daily Podcast</li>
+  </ul>
+
+  <h3>📚 線上課程平台動態</h3>
+  <div class="alert"><strong>⚡ SAT 知識衛星 — 2026 高峰會 5/11 開賣</strong>：32+ 國內外大師 + 限時優惠 + 限量名額。本週日（5/11）正式啟動，是 5 月最大競品動作。建議追蹤新講師名單，比對是否與 Hahow 開發中的人選重疊。</div>
+  <div class="hit"><strong>🎯 Hahow</strong>：本月 KOLxin 折扣碼（單堂 9 折／三堂 85 折）+ HMKT2605550（滿 $3,600 折 $550，至 5/4）持續操作。</div>
+  <p><strong>PressPlay × YOTTA 整併後</strong>：YOTTA 課程已併入 PPA，原帳號自動轉移。整併紅利期間值得觀察是否有新 IP 跨平台出來。</p>
+</section>
+
+<!-- §3 課程相關趨勢 -->
+<section>
+  <h2>🔥 課程相關趨勢</h2>
+
+  <h4>1. AI Agent 與 Vibe Coding 升溫，但走「非工程師也能用」路線</h4>
+  <p>2026 年最大趨勢已從「LLM 對話」轉向「Agent 工作流自動化」。台灣人工智慧學校 2026 課程明確把 Markdown 作為 AI 溝通語言、Agentic Engineering、Agent 架構設計列為核心。<strong>非技術人員的拖拉式 Agent 工具</strong>是新切角。命中：<span class="tag tag-orange">🎯 鄭中嘉 Eric（n8n）</span><span class="tag tag-orange">🎯 Peter Tu（Claude Code）</span><span class="tag tag-orange">🎯 高見龍（AI 工程師）</span><span class="tag tag-orange">🎯 HackBear Terry（AI×工程師）</span></p>
+
+  <h4>2. AI 投資｜人機協作做財務決策</h4>
+  <p>Hahow 上 Code Gym Ryan《高效 AI 投資術》4,927 人/NT$7,980 已驗證市場。Terry 切角 B（工程師的投資腦）正好踩在 AI×投資的甜蜜點。財經 ETF 5 月配息表、00940 突破解套等社群熱議，配合記憶體 AI 超級循環題材，是切角加溫期。命中：<span class="tag tag-orange">🎯 HackBear Terry</span><span class="tag tag-orange">🎯 王伯達</span><span class="tag tag-orange">🎯 Will 黃士豪（觀察）</span><span class="tag tag-orange">🎯 CMoney 派老師</span></p>
+
+  <h4>3. 韌性 × 心理素質 × 情緒管理</h4>
+  <p>2026 年企業最看重技能榜：分析性思考（70%）→ 韌性、靈活性 → 領導力與社會影響力。博客來新書榜《逆境翻身》《強大自我的情緒管理》《關係的語言》三本同期上榜。這個窗口建議推進心理向人選的 hook 課切角。命中：<span class="tag tag-orange">🎯 洪仲清</span><span class="tag tag-orange">🎯 蘇絢慧</span><span class="tag tag-orange">🎯 王雅涵</span><span class="tag tag-orange">🎯 蔡宇哲（觀察）</span></p>
+
+  <h4>4. 永續 / 長照 / 大缺工的「成熟世代」需求</h4>
+  <p>2026 年職場新興職類：AI 應用規劃師、ESG 永續顧問、長照管理師、諮商心理師。同期生死教育、退休規劃、家庭資產配置等「成熟世代」課程需求上升。命中：<span class="tag tag-orange">🎯 Will 黃士豪（退休 × 中年世代財務）</span><span class="tag tag-orange">🎯 小冬瓜（鮭魚）</span><span class="tag tag-orange">🎯 王偉全院長（黴菌健康）</span></p>
+</section>
+
+<!-- §4 本週社群熱議 -->
+<section>
+  <h2>💬 本週台灣社群熱議</h2>
+
+  <div class="person-block">
+    <strong>1. 🔥🔥🔥 愛爾麗醫美偷拍案 — 全台 18 間分店全裝針孔</strong>
+    <span class="tag tag-cat">社會</span>
+    <p>女顧客在板橋分店發現偽裝成煙霧偵測器的針孔攝影機，檢警搜索後發現 18 間分店全有，鏡頭正對美容床。社群憤怒度極高，新北檢警擴大偵辦，衛福部祭最重 25 萬罰鍰。許多受害者要求退費被神隱、北市接到近 50 件陳情、新竹分店現場抗議。</p>
+    <p><strong>課程機會</strong>：跟「教醫美」課程沒有直接利好（短期反彈醫美），但「女性自我保護 / 隱私安全 / 消費維權 / 簡易反偷拍」是潛在小型切角，可能適合民防/法律向人選 spin-off。<span class="salmon-hot">⚠️ 與 Vais 開發中的醫美/體態類人選無直接負面關聯，但建議避免本月發任何醫美題材內容（連帶疑慮）。</span></p>
+  </div>
+
+  <div class="person-block">
+    <strong>2. 🔥🔥🔥 賴清德搭史瓦帝尼國王專機突圍訪非</strong>
+    <span class="tag tag-cat">政治外交</span>
+    <p>5/2 凌晨史瓦帝尼國王 A340 專機從桃園起飛，14 小時後抵史，5/5 同機返台，刻意關閉飛機身分資訊。在野黨批「灰色外交」、執政黨稱「衝破中國封鎖」。海馬士月底付款進度成立法院延伸戰場。</p>
+    <p><strong>課程機會</strong>：純政治話題，不適合直接做課。但「國際關係 / 兩岸局勢」說書類訂閱有可能（敏迪選讀本週繼續高排名 Podcast Top 10 印證）。普通，不優先。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>3. 🔥🔥 記憶體 / AI 超級循環延燒 — DRAM、NAND Q2 漲 50%+</strong>
+    <span class="tag tag-cat">財經科技</span>
+    <p>群聯第一季 EPS 68.8 元創歷史單季新高、南亞科+華邦電+群聯+威剛庫存合計破千億。野村預測 2026 Q2 DRAM 漲 51%、NAND 漲 50%。創見董事長預估缺貨延續至 2028 年。本週華邦電、M31 等法說會密集登場。</p>
+    <p><strong>課程機會</strong>：直接利好「AI 投資/科技投資」切角，<span class="salmon-hot">🎯 強烈命中 Terry（AI×工程師 切角 A）／ 王伯達（向經濟史學習的十二個月）／ Will 黃士豪（中年退休規劃）</span>。建議 Q2 內就把 Terry 的問卷與王伯達的 9 月 follow-up 排好，乘著題材熱度。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>4. 🔥🔥 Threads 推出網頁版訊息功能（5/8 上線）</strong>
+    <span class="tag tag-cat">科技社群</span>
+    <p>Threads 全球推出 threads.com 網頁版訊息，可發送文字/多媒體訊息、編輯已傳出內容。台灣月活躍 350 萬，月發文量已超越 FB 形成「社群黃金交叉」，Threads 正式變成 KOL 與品牌經營主戰場。</p>
+    <p><strong>課程機會</strong>：「Threads 經營與創作者個人品牌」是全新切角，但市面上付費資源還很少。可考慮找具 Threads 高聲量人選（蘇益良、Peggy Chen、苗博雅 35.7 萬 Threads）做題材。普通—中等優先。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>5. 🔥🔥 動力火車、孫燕姿 5 月台北小巨蛋/大巨蛋連唱（5/15-17）</strong>
+    <span class="tag tag-cat">娛樂演藝</span>
+    <p>動力火車睽違三年連唱三天小巨蛋（5/15-17），孫燕姿同檔期大巨蛋《就在日落以後》（5/15、17）。日本歌手 Rokudenashi、majiko 同月來台。演唱會週帶動社群正能量話題集中。</p>
+    <p><strong>課程機會</strong>：與課程關聯弱。但「副業帶活動 / 演唱會周邊代購」短期有相關話題討論度，無直接命中。普通，不優先。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>6. 🔥🔥 SAT 知識衛星 2026 高峰會 5/11 開賣</strong>
+    <span class="tag tag-cat">教育產業</span>
+    <p>32+ 國內外大師、限量、限時優惠。SAT 持續走「精品大師」路線，從蔡宇哲（睡眠/臨床心理）、徐棟英（剛被簽走，超慢跑）等大師可看出他們同樣鎖定「公信力方法論 + 深層賦能」。</p>
+    <p><strong>課程機會</strong>：⚡ 直接競品動作。建議：(a) 拿到他們高峰會講師名單後，逐一比對是否與 Hahow 開發中或鮭魚名單重疊；(b) 觀察 5–6 月有無下殺優惠或方案調整需要對應。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>7. 🔥 高麗菜煮蛋那桌 / 龐奇紅毛猩猩 / 新「笑死」符號 — Threads 梗持續發酵</strong>
+    <span class="tag tag-cat">社群文化</span>
+    <p>2026 年 Threads 上爆紅梗合集，包括「高麗菜煮蛋那桌」、紅毛猩猩龐奇引爆全台「母愛」（連日本 IKEA 送玩偶）、日本網友發明的新一代笑死符號開始在台灣大量被使用。</p>
+    <p><strong>課程機會</strong>：純社群梗，無直接課程切角。普通，不優先。</p>
+  </div>
+
+  <div class="person-block">
+    <strong>8. 🔥 5 月報稅季 + 2026 ETF 配息表 — 個人理財再升溫</strong>
+    <span class="tag tag-cat">民生財經</span>
+    <p>5/1-6/1 報稅期帶動「免稅額、扶養、扣除額、股利課稅」搜尋升溫。同期 30 檔台股 ETF 配息表上架、00940 月漲 10% 創新高解套但月配 ETF 開始被「丟掉」。「個人/家庭理財」搜尋熱度高。</p>
+    <p><strong>課程機會</strong>：<span class="salmon-hot">🎯 命中珊迪兔（家庭理財類訂閱，Vais 已寄邀約信等內部討論）／李其展（基本分析×技術分析，Frank 合約談判中）／楊應超（財富自由，Charlene 開發信邀約）</span>。建議珊迪兔的 follow-up 抓 5/15 前後。</p>
+  </div>
+</section>
+
+<!-- §5 人選動態追蹤 -->
+<section>
+  <h2>👥 人選動態追蹤（依 Assignee 分組）</h2>
+  <p style="font-size: 0.88rem; color: #666; margin-bottom: 10px;">本區依 Asana CSV「ILXP CD 團隊推進」現況呈現，僅列入「進行中」（排除婉拒/先放掉/長期經營）。</p>
+
+  <div class="assignee-header">🟦 Vais Ljakalevuan（22 位進行中）</div>
+  <ul>
+    <li><strong>🍉 吳哲宇</strong>（已簽約等待進案）｜紙本 0410 寄出，本週靜默期。</li>
+    <li><strong>艾德導演（鮭魚）</strong>｜0428 已簽約，七月組群開始。</li>
+    <li>⚡ <strong>Kenji</strong>（CPC 提案中）｜0421 已追蹤，老師說 5 月才有空，本週可主動 Re-engage。</li>
+    <li><strong>KIMIKO</strong>｜0428 JJ 回覆內部還要討論，5 月仍待 JJ 確認 — 提醒：醫美偷拍熱度本月最好不要主動推同檔期內容。</li>
+    <li>⚡ <strong>Hiroshi（鮭魚日文發音）</strong>｜4/30 會議已開（提案 v5），本週應有會議結論待跟進。</li>
+    <li><strong>營養師杯蓋</strong>｜5/7 第二封 follow-up 已寄，5/11 已建排程提醒（即今天）— 留意是否需要主動追。</li>
+    <li>⚡ <strong>張盛舒（鮭魚命理）</strong>｜5/6 會議完成；5/20 第一次追蹤。本週無動作；提醒在 5/20 主動聯繫。</li>
+    <li><strong>YouTuber Mana｜日文課（PPA 藝人）</strong>｜0420 經紀人有回訊但還沒約到會議。本週建議二次跟進。</li>
+    <li>⚡ <strong>王伯達（鮭魚類訂閱）</strong>｜5/4 會議完成、選路線 A（歷史視角型），9 月 follow-up。本週無動作，但 AI 半導體題材正熱，可記下做為 9 月 pitch deck 的素材。</li>
+    <li><strong>Terry（HackBear）</strong>｜5/8 三份問卷 draft 完成（切角 A/B/C），本週進入內部 review。建議盡快上線投放，乘 AI×投資題材熱度。</li>
+    <li>[卡關] <strong>黑熊學院</strong>｜4/2 出新開發信，等回覆。</li>
+    <li>[卡關] <strong>dodomen｜軟技能</strong>｜會議完成需 5/底前給對方想法。</li>
+    <li><strong>洪震宇</strong>（新課 or 類訂閱）｜2nd Priority。</li>
+    <li><strong>娜娜（Mana 不同人）｜日文課（PPA）</strong>｜0417 五 發 IG 訊息。</li>
+    <li><strong>黃山料</strong>｜0420 對方回信無意願但 Vais 今早回信繼續抓緊。<strong>新動態</strong>：黃山料 2026 新書《擁有過 就好》已上架（誠品/蝦皮），「擁有過 就好」這個關鍵字本週搜尋上升，可作為下次 pitch 的 hook。</li>
+    <li><strong>珊迪兔</strong>｜0417 五 對方說過一週後追蹤，本週應主動跟進（搭 5 月報稅+ETF 季財務話題）。</li>
+    <li><strong>學台語（温若喬）</strong>｜0427 回信，等温老師跟學籽開會結論。</li>
+    <li><strong>洪仲清</strong>｜0421 寄信，本週尚無回覆，可在 5 月底前考慮第二封追蹤（搭《關係的語言》新書熱度）。</li>
+    <li><strong>方慈聲 Grace</strong>｜0417 五 再發信追蹤，本週仍無回覆。</li>
+    <li><strong>愛瑞克</strong>｜試試重新開發。</li>
+    <li><strong>連俞涵</strong>｜研究完了，待跟內容長確認。</li>
+    <li><strong>米薩｜阿卡西、水晶、塔羅</strong>｜SAT 賣不好先暫緩。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 Charlene Liang（26 位進行中）</div>
+  <ul>
+    <li><strong>合約談判中</strong>：筋肉萬萬（鮭魚）、Allan AI 簡報、貫譽、哇哉 Wazaiii。<span class="salmon-hot">🎯 Allan、筋肉萬萬皆鮭魚名單命中</span>。</li>
+    <li><strong>Squad/CPC 推進</strong>：Lenore（阿卡西，使用者訪談）、大萬（阿卡西，使用者訪談）、林炳存×蘇益良（攝影）、吳詩羽×吳照明（珠寶鑑定）、Code Gym（AI Agent 投資分析）、啾 C 肌動學、朱麒。</li>
+    <li><strong>合作洽談中</strong>：拾學（窗口三強調分潤+保底）、靈感日日村（5/20 後主動聯繫）、樊松蒲、小深藍（鮭魚命中）、CMoney 派老師、潘思璇（人生財報）、尼可、邱韜誠、龍騰文化、康健、Alpha Team。</li>
+    <li><strong>新開發信邀約中</strong>：橘世代、學途、HiSkio、楊應超（財富自由）。<span class="salmon-hot">🎯 楊應超 命中本週「個人理財再升溫」題材</span>。</li>
+    <li>⚡ <strong>本週重點</strong>：合作洽談中的潘思璇/CMoney 派老師/邱韜誠/楊應超 都踩在 ETF/投資/退休題材上，Charlene 可串成「家庭資產配置」package 推進。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 JolinaTu（19 位進行中）</div>
+  <ul>
+    <li><strong>已簽約等待進案</strong>：圈外設計（UI×AI 生成）、YUANCHi（手感繪畫）。</li>
+    <li><strong>合約談判中</strong>：王偉全院長（黴菌，4/30 前合約調整完）、于玥（直覺塔羅，跟法務來回）、商周刊×林靜宜。</li>
+    <li><strong>Squad 投放/製作</strong>：立達徵信社（人性鑑識+跨國偵探）、春花媽（藥輪）、酒 Ann（Google workspace 4 月中啟動）、蘇絢慧（10 月做問卷，命中本週心理新書熱潮）、萬鈞（產業研究，年底啟動）。</li>
+    <li>⚡ <strong>Peter Tu（Claude code 職場應用）</strong>：CPC 提案中，AI Agent 趨勢命中；高見龍（AI 工程師）也在 CPC 提案。⚡ 兩個都吃到 Vibe Coding/AI Agent 熱潮，可串成「AI 工作流」陣型。</li>
+    <li><strong>合作洽談中</strong>：謝哲青（閱讀美學，命中博客來心理勵志熱潮）、YUANCHi 插畫（4/29 提供新課綱）、傅佩榮（易經）。</li>
+    <li><strong>開發信邀約中</strong>：哈利說（市場觀察）、黃欽勇（產業分析）、Peter Tu（重複條目）。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 Frank Chien（14 位進行中）</div>
+  <ul>
+    <li><strong>已簽約等待進案</strong>：花生人（區塊鏈）、徐之陽（藝術鑑賞）、WORD UP×三原（日文課）。</li>
+    <li><strong>合約談判中</strong>：海總理（AI 每週實戰案例）、貝殼放大（脊慢跑+品水）、孫其君（實用英語）、李其展（基本分析×技術分析，命中本週財經題材）。</li>
+    <li><strong>Squad/CPC</strong>：許詮（漲薪秘訣）、六角學院（n8n、Vibecoding，命中 AI Agent 趨勢）、小飛（戶外玩水自救）、花生人區塊鏈商學院。</li>
+    <li><strong>合作洽談中</strong>：時刻威宇（說話課）、城邦（雙邊上架）。</li>
+    <li>⚡ <strong>本週重點</strong>：李其展、海總理 都吃到本週財經/AI 題材熱度，可主動加溫推進；六角學院 n8n 課題材正熱。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 Momo Tseng（13 位進行中）</div>
+  <ul>
+    <li>🍉 <strong>吳永進（AutoCAD，鮭魚）</strong>｜年後專案結束，合約談判中。<span class="salmon-hot">🎯 鮭魚 25H2 名單明確命中</span>。</li>
+    <li><strong>Sam Tsai（Vibe Coding）</strong>｜2026 重啟，CPC 中。命中 AI Agent 趨勢。</li>
+    <li>⌛️ <strong>Alonso+Shihfei（Creator Charactor）</strong>｜CPC，關心送審。</li>
+    <li><strong>說說刺繡</strong>、<strong>李歐（Premiere，鮭魚 25H2 名單）</strong>、<strong>Leslie</strong>｜CPC。</li>
+    <li><strong>合作洽談中</strong>：Joe（金融）、🍉 空罐王。</li>
+    <li><strong>開發信邀約中</strong>：Grace / BetweenGos（雙邊上架 or 類訂閱）、高培（投資理財）、Raymond（加密貨幣）、邱煜庭、彭毅弘 Bill（鮭魚 25H2 名單）。</li>
+    <li>⚡ <strong>本週重點</strong>：吳永進、彭毅弘 Bill、李歐 都在鮭魚 25H2 名單上，狀態活躍。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 林昀靜（Jane）（13 位進行中）</div>
+  <ul>
+    <li><strong>合作洽談中</strong>：王雅涵（心理師，命中本週心理新書熱潮）、家庭兄弟（穿搭）、阿飛（紫微心靈）。</li>
+    <li><strong>開發信邀約中</strong>：秦客（創意料理）、瑪姬（減脂食譜）、her_new_story（閱讀沙龍）、awoo（SEO）、安妮（不記帳就能存錢，命中理財）、大王里山（永續家園）、原來博士（易經，與 Jolina 傅佩榮重疊主題，建議內部協調）、劉玉皙（投資地緣風險）、陳怡婷（營養師）、瑞星（種菜）。</li>
+    <li>⚡ <strong>本週重點</strong>：王雅涵正搭《關係的語言》《強大自我的情緒管理》新書熱度，建議優先加溫推進；劉玉皙地緣風險財書 2026/3 已出版，社群已待半個季度，可考慮第二封信。</li>
+  </ul>
+
+  <div class="assignee-header">🟦 Frank Chien × Oscar Du × 其他</div>
+  <ul>
+    <li><strong>Oscar Du（4）</strong>：MIXXIN×曲奇放克、MIXXIN×VK 科技閱讀（NotebookLM）、香港皇冠 Chef Chu's Kitchen（港點）、MIXXIN-Nuomi。</li>
+  </ul>
+</section>
+
+<!-- §6 鮭魚機會雷達 -->
+<section>
+  <h2>🐟 鮭魚機會雷達</h2>
+
+  <h3>正在推進的鮭魚（已在 Asana / Vais Dashboard 內）</h3>
+  <table>
+    <thead><tr><th>老師</th><th>狀態</th><th>本週動態</th></tr></thead>
+    <tbody>
+      <tr><td>Allan AI 簡報</td><td>合約談判中（Charlene）</td><td>無外部新動態，AI Agent 趨勢加溫對課題正向</td></tr>
+      <tr><td>筋肉萬萬</td><td>合約談判中（Charlene）</td><td>體態題材，本月避開醫美風暴</td></tr>
+      <tr><td>Hiroshi（日文發音）</td><td>4/30 會議完成（Vais）</td><td>—</td></tr>
+      <tr><td>王伯達</td><td>5/4 會議完成、選路線 A（Vais）</td><td>🔥 <strong>熱點鮭魚</strong>：AI 半導體本週題材正熱，9 月 follow-up 時可帶素材</td></tr>
+      <tr><td>朱騏（個人專案管理）</td><td>5/7 內部提案 v2（Vais）</td><td>—</td></tr>
+      <tr><td>鄭中嘉 Eric（n8n）</td><td>2026/05/08 深度研究完成（Vais）</td><td>🔥 AI Agent / Vibe Coding 趨勢命中</td></tr>
+      <tr><td>艾德導演</td><td>0428 已簽約（Vais）</td><td>—</td></tr>
+      <tr><td>張盛舒</td><td>5/6 會議完成（Vais）</td><td>—</td></tr>
+      <tr><td>Kenji</td><td>CPC 提案中（Vais）</td><td>5 月可重新主動聯繫</td></tr>
+      <tr><td>吳永進（AutoCAD）</td><td>合約談判中（Momo）</td><td>—</td></tr>
+      <tr><td>李歐（Premiere）</td><td>CPC 中（Momo）</td><td>—</td></tr>
+      <tr><td>彭毅弘 Bill（簡報）</td><td>開發信邀約（Momo）</td><td>🔥 與 Allan AI 簡報主題重疊，建議內部協調差異化定位</td></tr>
+    </tbody>
+  </table>
+
+  <h3>鮭魚 25H2 名單尚未推進的機會</h3>
+  <ul>
+    <li><strong>溫明輝</strong>（UX 三刀流）｜舊課更新意願 — 配合 AI×UX 工作流升溫，可考慮重啟。</li>
+    <li><strong>洪婉蒨</strong>（鏡頭表達力）｜舊課更新 — 直播/短影音時代，鏡頭表達力需求穩定。</li>
+    <li><strong>王介安</strong>（GAS 職場談判）｜舊課更新 — 職場韌性主題正熱。</li>
+    <li><strong>彭其捷</strong>（已表態）｜鮭魚新課，方向待 brief。</li>
+    <li><strong>Particoo</strong>（已表態）｜舊課更新。</li>
+    <li><strong>江湖人稱 S 姐</strong>（職涯健檢，2018 年）｜中度變動，「2026 韌性人才」題材契合度高。</li>
+    <li><strong>超核心健身</strong>｜居家訓練、女性健身專班，避開醫美風暴的好時機。</li>
+    <li><strong>小冬瓜</strong>｜近期動態：殯葬業者持續積極經營，2024 廣播金鐘獎。生死教育/陪伴/告別主題與「成熟世代財務+人生規劃」並列，可考慮跟著 Will 黃士豪做一個「中年/熟齡」topic series。</li>
+    <li><strong>秘密基地戶外工作室</strong>｜戶外安全/自救，與 Frank「小飛戶外玩水自救」可形成戶外安全 series。</li>
+    <li><strong>許明恩（區塊勢）</strong>｜2026 年身分轉變（從利益迴避轉公開揭露）、3/6 企業 Web3 工作坊、AI 開源共創實驗。<strong>個人 IP 動能上升中</strong>，鮭魚評估表上 6.3 萬 FB 觸及。</li>
+  </ul>
+</section>
+
+<!-- §7 本週開發建議 -->
+<section>
+  <h2>💡 本週開發建議（3 個具體行動）</h2>
+  <ol style="margin-left: 22px;">
+    <li><strong>盯緊 SAT 5/11 高峰會講師名單</strong>：拿到後比對 Hahow 開發中名單與鮭魚名單，特別注意是否有重疊老師被「精品大師」路線挖走（蔡宇哲、徐棟英先例）。如果發現，需立刻評估是否提速我方提案。<em>負責人建議：Vais + Charlene 一起 review</em>。</li>
+    <li><strong>串「AI×投資×財經」題材陣型</strong>：本週記憶體/AI 半導體題材火熱（DRAM Q2 漲 51%、群聯 EPS 創高），加上 5 月報稅+ETF 配息+月配 ETF 退潮話題。Frank 的李其展、Charlene 的 CMoney/楊應超/潘思璇、Vais 的 Terry/王伯達/Will、JolinaTu 的萬鈞 都吃到熱度。建議內部開一次 30 分鐘對齊會，避免重複切角、形成主題群推進。</li>
+    <li><strong>心理向人選乘《關係的語言》新書熱度推進</strong>：洪仲清（Vais，已寄信）、王雅涵（Jane，洽談中）、蘇絢慧（JolinaTu，10 月問卷）建議在 5 月底前都至少前進一個階段。文耀翰新書中文版 5/6 出版會帶動 6 月談「人際關係/情緒」搜尋熱度，正好踩上 hook 課集資準備期。</li>
+  </ol>
+
+  <p class="footnote">📡 報告產出：2026-05-11｜資料來源：博客來、Apple Podcast、Threads/Dcard 趨勢、Hahow ILXP_CD_團隊推進.csv（4/23 匯出）、人選開發評估表、鮭魚 Excel、課程開發.md（5/8 更新）。下一份：2026-05-18。</p>
+</section>
+
+</div>
+</body>
+</html>
