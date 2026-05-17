@@ -6,95 +6,19 @@
   <title>📡 Hahow 市場雷達</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, 'Noto Sans TC', sans-serif;
-      background: #f0faf8;
-      color: #333;
-      min-height: 100vh;
-    }
-    header {
-      background: linear-gradient(135deg, #1F497D 0%, #0ADAB2 100%);
-      color: white;
-      padding: 40px 24px 32px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-    header p {
-      opacity: 0.85;
-      font-size: 0.95rem;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 32px 24px;
-    }
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1F497D;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #0ADAB2;
-    }
-    .report-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-    .report-card {
-      background: white;
-      border-radius: 12px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border-left: 4px solid #0ADAB2;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .report-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(10,218,178,0.15);
-    }
-    .report-card a {
-      text-decoration: none;
-      color: #1F497D;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .report-card .date {
-      font-size: 0.85rem;
-      color: #888;
-    }
-    .badge {
-      background: #0ADAB2;
-      color: #1F497D;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-    .badge.latest {
-      background: #FA8D0B;
-      color: white;
-    }
-    .empty {
-      text-align: center;
-      color: #aaa;
-      padding: 40px;
-    }
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: #aaa;
-    }
+    body { font-family: system-ui, 'Noto Sans TC', sans-serif; background: #f0faf8; color: #333; min-height: 100vh; }
+    header { background: linear-gradient(135deg, #1F497D 0%, #0ADAB2 100%); color: white; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+    .section-title { font-size: 1.1rem; font-weight: 700; color: #1F497D; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #0ADAB2; }
+    .report-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .report-card { background: white; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #0ADAB2; }
+    .report-card a { text-decoration: none; color: #1F497D; font-weight: 600; font-size: 1rem; }
+    .report-card .date { font-size: 0.85rem; color: #888; }
+    .badge { background: #0ADAB2; color: #1F497D; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .badge.latest { background: #FA8D0B; color: white; }
+    footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
   </style>
 </head>
 <body>
@@ -102,50 +26,15 @@
     <h1>📡 Hahow 市場雷達</h1>
     <p>每週一自動產出，涵蓋排行榜、社群熱議、人選動態與鮭魚機會</p>
   </header>
-
   <div class="container">
     <div class="section-title">📋 全團隊版報告</div>
-    <div class="report-list" id="team-reports">
-      <div class="empty">載入中...</div>
-    </div>
+    <div class="report-list" id="team-reports"></div>
   </div>
-
   <footer>自動產出 by Claude · Hahow 課程開發團隊</footer>
-
   <script>
-    // 已知的報告清單（每次新增報告後自動更新）
-    const reports = [
-      "2026-05-11",
-      "2026-05-03",
-      "2026-04-26",
-      "2026-04-19",
-      "2026-04-13",
-      "2026-04-06",
-      "2026-03-30",
-      "2026-03-24",
-      "2026-03-23",
-    ];
-
-    const container = document.getElementById('team-reports');
-    container.innerHTML = '';
-
-    if (reports.length === 0) {
-      container.innerHTML = '<div class="empty">目前尚無報告</div>';
-    } else {
-      reports.forEach((date, index) => {
-        const card = document.createElement('div');
-        card.className = 'report-card';
-        const isLatest = index === 0;
-        card.innerHTML = `
-          <div>
-            <a href="reports/market-radar-team-${date}.html">📊 市場雷達 — ${date} 全團隊版</a>
-            <div class="date">${date}</div>
-          </div>
-          ${isLatest ? '<span class="badge latest">最新</span>' : '<span class="badge">歷史</span>'}
-        `;
-        container.appendChild(card);
-      });
-    }
+    const reports = ["2026-05-17","2026-05-11","2026-05-03","2026-04-26","2026-04-19","2026-04-13","2026-04-06","2026-03-30","2026-03-24","2026-03-23"];
+    const c = document.getElementById('team-reports');
+    reports.forEach((d,i) => { const card = document.createElement('div'); card.className='report-card'; card.style.cssText='border-radius:12px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #0ADAB2;background:white;margin-bottom:12px;'; card.innerHTML='<div><a href="reports/market-radar-team-'+d+'.html">📊 市場雷達 — '+d+' 全團隊版</a><div style="font-size:0.85rem;color:#888">'+d+'</div></div>'+(i===0?'<span class="badge latest">最新</span>':'<span class="badge">歷史</span>'); c.appendChild(card); });
   </script>
 </body>
 </html>
